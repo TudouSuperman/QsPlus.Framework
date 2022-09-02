@@ -6,8 +6,8 @@
 // QQ : 2581424471@qq.com
 //------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using QsPlus.Framework.Common;
 using QsPlus.Framework.Reference;
 
@@ -85,9 +85,9 @@ namespace QsPlus.Framework.Event
         /// <returns>指定框架事件的数量。</returns>
         public int EventCount(int id)
         {
-            if (_mEvents.TryGetValue(id, out QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandlers))
+            if (_mEvents.ContainsKey(id))
             {
-                return eventHandlers.GetInvocationList().Length;
+                return _mEvents[id].GetInvocationList().Length;
             }
 
             return 0;
@@ -108,18 +108,7 @@ namespace QsPlus.Framework.Event
 
             if (_mEvents.TryGetValue(id, out QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandlers))
             {
-                if (eventHandlers == null || eventHandlers.GetInvocationList().Length <= 0)
-                {
-                    return false;
-                }
-
-                foreach (Delegate item in eventHandlers.GetInvocationList())
-                {
-                    if (item.Equals(eventHandler))
-                    {
-                        return true;
-                    }
-                }
+                return eventHandlers.GetInvocationList().Contains(eventHandlers);
             }
 
             return false;
@@ -137,10 +126,9 @@ namespace QsPlus.Framework.Event
                 throw new QsPlusFrameworkException("[要订阅的框架事件处理函数是无效的 -> null]");
             }
 
-            if (_mEvents.TryGetValue(id, out QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandlers))
+            if (_mEvents.ContainsKey(id))
             {
-                eventHandlers += eventHandler;
-                _mEvents[id] = eventHandlers;
+                _mEvents[id] += eventHandler;
             }
             else
             {
@@ -160,17 +148,13 @@ namespace QsPlus.Framework.Event
                 throw new QsPlusFrameworkException("[要取消订阅的框架事件处理函数是无效的 -> null]");
             }
 
-            if (_mEvents.TryGetValue(id, out QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandlers))
+            if (_mEvents.ContainsKey(id))
             {
-                if (eventHandlers == null)
-                {
-                    _mEvents.Remove(id);
-                }
-                else
-                {
-                    eventHandlers -= eventHandler;
-                    _mEvents[id] = eventHandlers;
-                }
+                _mEvents[id] -= eventHandler;
+            }
+            else
+            {
+                _mEvents.Remove(id);
             }
         }
 
@@ -224,7 +208,7 @@ namespace QsPlus.Framework.Event
             }
             else
             {
-                throw new QsPlusFrameworkException($"[此事件未订阅 -> sender : {sender} -> eventArgs : {eventArgs} -> args : {args}]");
+                throw new QsPlusFrameworkException($"[此事件未订阅 -> sender : {(sender == null ? "null" : sender.ToString())} -> eventArgs : {eventArgs} -> args : {(args == null ? "null" : args.ToString())}]");
             }
         }
     }
