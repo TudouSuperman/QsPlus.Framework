@@ -28,34 +28,34 @@ namespace QsPlus.Framework.Message
         /// <param name="id">要检查的框架消息编号。</param>
         /// <param name="message">要检查的框架消息。</param>
         /// <returns>是否存在指定框架消息。</returns>
-        bool CheckMessage(int id, QsPlusFrameworkAction<Message> message);
+        bool CheckMessage(int id, QsPlusFrameworkAction<object> message);
 
         /// <summary>
         /// 订阅框架消息。
         /// </summary>
         /// <param name="id">要订阅的框架消息编号。</param>
         /// <param name="message">要订阅的框架消息。</param>
-        void SubscribeMessage(int id, QsPlusFrameworkAction<Message> message);
+        void SubscribeMessage(int id, QsPlusFrameworkAction<object> message);
 
         /// <summary>
         /// 取消订阅框架消息。
         /// </summary>
         /// <param name="id">要取消订阅的消息编号。</param>
         /// <param name="message">要取消订阅的消息。</param>
-        void UnSubscribeMessage(int id, QsPlusFrameworkAction<Message> message);
+        void UnSubscribeMessage(int id, QsPlusFrameworkAction<object> message);
 
         /// <summary>
         /// 发送框架消息 - 线程安全模式。
         /// </summary>
         /// <param name="id">要发送消息的编号。</param>
         /// <param name="message">要发送的信息。</param>
-        void SendMessage(int id, Message message);
+        void SendMessage(int id, object message);
 
         /// <summary>
         /// 发送框架消息 - 立即发送模式。
         /// </summary>
         /// <param name="id">要发送消息的编号。</param>
         /// <param name="message">要发送的信息。</param>
-        void SendMessageNow(int id, Message message);
+        void SendMessageNow(int id, object message);
     }
 }

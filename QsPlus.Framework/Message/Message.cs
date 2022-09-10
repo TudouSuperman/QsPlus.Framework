@@ -13,7 +13,7 @@ namespace QsPlus.Framework.Message
     /// <summary>
     /// 框架消息类。
     /// </summary>
-    public sealed class Message : IReference
+    internal sealed class Message : IReference
     {
         /// <summary>
         /// 用户消息编号。

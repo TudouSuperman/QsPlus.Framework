@@ -13,7 +13,7 @@ namespace QsPlus.Framework.Event
     /// <summary>
     /// 事件管理器接口。
     /// </summary>
-    internal interface IEventManager
+    public interface IEventManager
     {
         /// <summary>
         /// 获取指定框架事件的数量。

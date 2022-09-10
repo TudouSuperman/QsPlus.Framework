@@ -21,7 +21,7 @@ namespace QsPlus.Framework.Message
         /// <summary>
         /// 消息缓存。
         /// </summary>
-        private readonly IDictionary<int, QsPlusFrameworkAction<Message>> _mMessages;
+        private readonly IDictionary<int, QsPlusFrameworkAction<object>> _mMessages;
 
         /// <summary>
         /// 框架消息处理队列。
@@ -33,7 +33,7 @@ namespace QsPlus.Framework.Message
         /// </summary>
         public MessageManager()
         {
-            _mMessages = new Dictionary<int, QsPlusFrameworkAction<Message>>();
+            _mMessages = new Dictionary<int, QsPlusFrameworkAction<object>>();
             _mHandleMessageQueue = new Queue<Message>();
         }
 
@@ -58,7 +58,7 @@ namespace QsPlus.Framework.Message
                         while (_mHandleMessageQueue.Count > 0)
                         {
                             Message msg = _mHandleMessageQueue.Dequeue();
-                            InternalHandleEvent(msg.MessageId, (Message) msg.UserMessageInfo);
+                            InternalHandleEvent(msg.MessageId, msg.UserMessageInfo);
                             InternalReferencePool.ReleaseReference(msg);
                         }
                     }
@@ -99,14 +99,14 @@ namespace QsPlus.Framework.Message
         /// <param name="id">要检查的框架消息编号。</param>
         /// <param name="message">要检查的框架消息。</param>
         /// <returns>是否存在指定框架消息。</returns>
-        public bool CheckMessage(int id, QsPlusFrameworkAction<Message> message)
+        public bool CheckMessage(int id, QsPlusFrameworkAction<object> message)
         {
             if (message == null)
             {
                 throw new QsPlusFrameworkException("[要检查的框架消息是无效的 -> null]");
             }
 
-            if (_mMessages.TryGetValue(id, out QsPlusFrameworkAction<Message> messages))
+            if (_mMessages.TryGetValue(id, out QsPlusFrameworkAction<object> messages))
             {
                 return messages.GetInvocationList().Contains(messages);
             }
@@ -119,7 +119,7 @@ namespace QsPlus.Framework.Message
         /// </summary>
         /// <param name="id">要订阅的框架消息编号。</param>
         /// <param name="message">要订阅的框架消息。</param>
-        public void SubscribeMessage(int id, QsPlusFrameworkAction<Message> message)
+        public void SubscribeMessage(int id, QsPlusFrameworkAction<object> message)
         {
             if (message == null)
             {
@@ -141,7 +141,7 @@ namespace QsPlus.Framework.Message
         /// </summary>
         /// <param name="id">要取消订阅的消息编号。</param>
         /// <param name="message">要取消订阅的消息。</param>
-        public void UnSubscribeMessage(int id, QsPlusFrameworkAction<Message> message)
+        public void UnSubscribeMessage(int id, QsPlusFrameworkAction<object> message)
         {
             if (message == null)
             {
@@ -163,7 +163,7 @@ namespace QsPlus.Framework.Message
         /// </summary>
         /// <param name="id">要发送消息的编号。</param>
         /// <param name="message">要发送的信息。</param>
-        public void SendMessage(int id, Message message)
+        public void SendMessage(int id, object message)
         {
             if (message == null)
             {
@@ -182,7 +182,7 @@ namespace QsPlus.Framework.Message
         /// </summary>
         /// <param name="id">要发送消息的编号。</param>
         /// <param name="message">要发送的信息。</param>
-        public void SendMessageNow(int id, Message message)
+        public void SendMessageNow(int id, object message)
         {
             if (message == null)
             {
@@ -195,9 +195,9 @@ namespace QsPlus.Framework.Message
         /// <summary>
         /// 内部处理框架事件函数。
         /// </summary>
-        private void InternalHandleEvent(int id, Message message)
+        private void InternalHandleEvent(int id, object message)
         {
-            if (_mMessages.TryGetValue(id, out QsPlusFrameworkAction<Message> messages))
+            if (_mMessages.TryGetValue(id, out QsPlusFrameworkAction<object> messages))
             {
                 messages?.Invoke(message);
             }
