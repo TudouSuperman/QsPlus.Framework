@@ -98,14 +98,19 @@ namespace QsPlus.Framework.Fsm
         public override int FsmStateCount => _mPushDownFsmStates.Count;
 
         /// <summary>
-        /// 获取当前状态机状态名称。
+        /// 获取下推状态机中栈区状态的数量。
+        /// </summary>
+        public int FsmStackStateCount => _mPushDownFsmStack.Count;
+
+        /// <summary>
+        /// 获取当前临时位状态机状态名称。
         /// </summary>
         public override string CurrentStateName => _mCurrentState.GetType().FullName;
 
         /// <summary>
-        /// 获取当前下推状态机状态。
+        /// 获取当前临时位下推状态机状态。
         /// </summary>
-        public FsmStateBase<TPushDownFsmOwner> CurrentState => _mCurrentState;
+        public PushDownFsmStateBase<TPushDownFsmOwner> CurrentState => _mCurrentState;
 
         /// <summary>
         /// 获取下推状态机是否正在运行。
@@ -328,7 +333,7 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 下推当前下推状态机。
+        /// 下推当前临时位的下推状态机。
         /// </summary>
         /// <typeparam name="TPushDownFsmOwnerState">要压入的下推状态机状态类型。</typeparam>
         internal void PushDownState<TPushDownFsmOwnerState>() where TPushDownFsmOwnerState : PushDownFsmStateBase<TPushDownFsmOwner>
@@ -337,7 +342,7 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 下推当前下推状态机。
+        /// 下推当前临时位的下推状态机。
         /// </summary>
         /// <param name="stateType">要压入的下推状态机状态类型。</param>
         internal void PushDownState(Type stateType)
@@ -360,7 +365,7 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 上移当前栈区栈顶下推状态机到临时位。
+        /// 上移当前栈区栈顶的下推状态机到临时位。
         /// </summary>
         internal void PopUpState()
         {

@@ -14,7 +14,7 @@ namespace QsPlus.Framework.Fsm
     /// 下推状态机状态基类。
     /// </summary>
     /// <typeparam name="TPushDownFsmOwner">下推状态机持有者类型。</typeparam>
-    public abstract class PushDownFsmStateBase<TPushDownFsmOwner> : FsmStateBase<TPushDownFsmOwner> where TPushDownFsmOwner : class
+    public abstract class PushDownFsmStateBase<TPushDownFsmOwner> where TPushDownFsmOwner : class
     {
         /// <summary>
         /// 下推状态机状态初始化时调用。
@@ -61,9 +61,9 @@ namespace QsPlus.Framework.Fsm
         protected internal abstract void OnClear(IPushDownFsm<TPushDownFsmOwner> fsm);
 
         /// <summary>
-        /// 切换当前下推状态机状态。
+        /// 下推当前临时位的下推状态机。
         /// </summary>
-        /// <typeparam name="TFsmState">要切换到的下推状态机状态类型。</typeparam>
+        /// <typeparam name="TFsmState">要压入的下推状态机状态类型。</typeparam>
         /// <param name="fsm">下推状态机引用。</param>
         protected void PushDownState<TFsmState>(IPushDownFsm<TPushDownFsmOwner> fsm) where TFsmState : PushDownFsmStateBase<TPushDownFsmOwner>
         {
@@ -77,10 +77,10 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 切换当前下推状态机状态。
+        /// 下推当前临时位的下推状态机。
         /// </summary>
         /// <param name="fsm">下推状态机引用。</param>
-        /// <param name="stateType">要切换到的下推状态机状态类型。</param>
+        /// <param name="stateType">要压入的下推状态机状态类型。</param>
         protected void PushDownState(IPushDownFsm<TPushDownFsmOwner> fsm, Type stateType)
         {
             PushDownFsm<TPushDownFsmOwner> pushDownFsmImplement = (PushDownFsm<TPushDownFsmOwner>) fsm;
@@ -103,7 +103,7 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 上移当前栈区栈顶下推状态机到临时位。
+        /// 上移当前栈区栈顶的下推状态机到临时位。
         /// </summary>
         /// <param name="fsm">下推状态机引用。</param>
         internal void PopUpState(IPushDownFsm<TPushDownFsmOwner> fsm)

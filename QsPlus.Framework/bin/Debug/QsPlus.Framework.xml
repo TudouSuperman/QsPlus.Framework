@@ -1,0 +1,2211 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QsPlus.Framework</name>
+    </assembly>
+    <members>
+        <member name="T:QsPlus.Framework.Asset.IAssetHelper">
+            <summary>
+            资源辅助器接口。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Asset.IAssetManager">
+            <summary>
+            资源管理器接口。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Common.IQsPlusFrameworkModule">
+            <summary>
+            框架模块接口。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Common.IQsPlusFrameworkModule.QsPlusFrameworkModulePriority">
+            <summary>
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Common.IQsPlusFrameworkModule.QsPlusFrameworkModuleUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Common.IQsPlusFrameworkModule.QsPlusFrameworkModuleShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFramework">
+            <summary>
+            QsPlusFramework...Go..!
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Common.QsPlusFramework.QsPlusFrameworkModules">
+            <summary>
+            框架模块链表。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFramework.QsPlusFrameworkModulesUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFramework.QsPlusFrameworkModulesShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFramework.GetQsPlusFrameworkModule``1">
+            <summary>
+            获取框架模块。
+            </summary>
+            <typeparam name="T">要获取的框架模块类型。</typeparam>
+            <returns>要获取的框架模块。</returns>
+            <remarks>如果要获取的框架模块不存在，则自动创建该框架模块。</remarks>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFramework.GetQsPlusFrameworkModule(System.Type)">
+            <summary>
+            获取框架模块。
+            </summary>
+            <param name="moduleType">要获取的框架模块类型。</param>
+            <returns>要获取的框架模块。</returns>
+            <remarks>如果要获取的框架模块不存在，则自动创建该框架模块。</remarks>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFramework.CreateQsPlusFrameworkModule(System.Type)">
+            <summary>
+            创建框架模块。
+            </summary>
+            <param name="moduleType">要创建的框架模块类型。</param>
+            <returns>要创建的框架模块。</returns>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction">
+            <summary>
+            封装一个方法 - 该方法没有参数。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction`1">
+            <summary>
+            封装一个方法 - 该方法具有一个参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkArgs">参数类型。</typeparam>
+            <param name="args">参数。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction`2">
+            <summary>
+            封装一个方法 - 该方法具有两个个参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkArgs1">参数类型1。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs2">参数类型2。</typeparam>
+            <param name="args1">参数1。</param>
+            <param name="args2">参数2。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction`3">
+            <summary>
+            封装一个方法 - 该方法具有三个个参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkArgs1">参数类型1。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs2">参数类型2。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs3">参数类型3。</typeparam>
+            <param name="args1">参数1。</param>
+            <param name="args2">参数2。</param>
+            <param name="args3">参数3。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction`4">
+            <summary>
+            封装一个方法 - 该方法具有四个个参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkArgs1">参数类型1。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs2">参数类型2。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs3">参数类型3。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs4">参数类型4。</typeparam>
+            <param name="args1">参数1。</param>
+            <param name="args2">参数2。</param>
+            <param name="args3">参数3。</param>
+            <param name="args4">参数4。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction`5">
+            <summary>
+            封装一个方法 - 该方法具有五个个参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkArgs1">参数类型1。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs2">参数类型2。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs3">参数类型3。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs4">参数类型4。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs5">参数类型5。</typeparam>
+            <param name="args1">参数1。</param>
+            <param name="args2">参数2。</param>
+            <param name="args3">参数3。</param>
+            <param name="args4">参数4。</param>
+            <param name="args5">参数5。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction`6">
+            <summary>
+            封装一个方法 - 该方法具有六个个参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkArgs1">参数类型1。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs2">参数类型2。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs3">参数类型3。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs4">参数类型4。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs5">参数类型5。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs6">参数类型6。</typeparam>
+            <param name="args1">参数1。</param>
+            <param name="args2">参数2。</param>
+            <param name="args3">参数3。</param>
+            <param name="args4">参数4。</param>
+            <param name="args5">参数5。</param>
+            <param name="args6">参数6。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkAction`7">
+            <summary>
+            封装一个方法 - 该方法具有七个个参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkArgs1">参数类型1。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs2">参数类型2。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs3">参数类型3。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs4">参数类型4。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs5">参数类型5。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs6">参数类型6。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs7">参数类型7。</typeparam>
+            <param name="args1">参数1。</param>
+            <param name="args2">参数2。</param>
+            <param name="args3">参数3。</param>
+            <param name="args4">参数4。</param>
+            <param name="args5">参数5。</param>
+            <param name="args6">参数6。</param>
+            <param name="args7">参数7。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkEventArgs">
+            <summary>
+            框架事件参数基类。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFrameworkEventArgs.#ctor">
+            <summary>
+            初始化框架事件参数基类的新实例。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFrameworkEventArgs.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkEventHandler`1">
+            <summary>
+            事件处理者。
+            </summary>
+            <typeparam name="TQsPlusFrameworkEventArgs">事件参数类型。</typeparam>
+            <param name="sender">事件发送者。</param>
+            <param name="e">事件参数。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkEventHandler`2">
+            <summary>
+            事件处理者 - 允许附带一个奇怪的参数。
+            </summary>
+            <typeparam name="TQsPlusFrameworkEventArgs">事件参数类型。</typeparam>
+            <typeparam name="TQsPlusFrameworkArgs">奇怪的参数类型。</typeparam>
+            <param name="sender">事件发送者。</param>
+            <param name="e">事件参数。</param>
+            <param name="args">奇怪的参数。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkException">
+            <summary>
+            初始化框架异常类的新实例。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFrameworkException.#ctor">
+            <summary>
+            初始化框架异常类的新实例。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFrameworkException.#ctor(System.String)">
+            <summary>
+            使用指定错误消息初始化框架异常类的新实例。
+            </summary>
+            <param name="message">描述错误的消息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFrameworkException.#ctor(System.String,System.Exception)">
+            <summary>
+            使用指定错误消息和对作为此异常原因的内部异常的引用来初始化框架异常类的新实例。
+            </summary>
+            <param name="message">解释异常原因的错误消息。</param>
+            <param name="innerException">导致当前异常的异常。如果 innerException 参数不为空引用，则在处理内部异常的 catch 块中引发当前异常。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Common.QsPlusFrameworkException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            用序列化数据初始化框架异常类的新实例。
+            </summary>
+            <param name="info">存有有关所引发异常的序列化的对象数据。</param>
+            <param name="context">包含有关源或目标的上下文信息。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Common.QsPlusFrameworkModulePriority">
+            <summary>
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Common.QsPlusFrameworkModulePriority.ReferenceManager">
+            <summary>
+            引用管理器。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Common.QsPlusFrameworkModulePriority.EventManager">
+            <summary>
+            事件管理器。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Common.QsPlusFrameworkModulePriority.MessageManager">
+            <summary>
+            消息管理器。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Common.QsPlusFrameworkModulePriority.FsmManager">
+            <summary>
+            状态机管理器。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Common.QsPlusFrameworkModulePriority.UiManager">
+            <summary>
+            界面管理器。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Common.QsPlusFrameworkModulePriority.ConfigManager">
+            <summary>
+            配置管理器。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Config.ConfigManager">
+            <summary>
+            配置管理器接口。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Config.ConfigManager.QsPlusFrameworkModulePriority">
+            <summary>
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Config.ConfigManager.QsPlusFrameworkModuleUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Config.ConfigManager.QsPlusFrameworkModuleShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Config.IConfigManager">
+            <summary>
+            配置管理器接口。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Event.Event">
+            <summary>
+            框架事件类。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Event.Event.Sender">
+            <summary>
+            事件发送者。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Event.Event.EventArgs">
+            <summary>
+            框架事件参数。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Event.Event.Args">
+            <summary>
+            奇怪的参数。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Event.Event.#ctor">
+            <summary>
+            初始化框架事件类的新实例。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Event.Event.Create(System.Object,QsPlus.Framework.Event.GameEventArgs,System.Object)">
+            <summary>
+            创建框架事件类的新实例。
+            </summary>
+            <param name="sender">事件发送者。</param>
+            <param name="eventArgs">框架事件参数。</param>
+            <param name="args">奇怪的参数。</param>
+            <returns>创建的框架事件类。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Event.Event.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Event.EventManager">
+            <summary>
+            事件管理器类。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Event.EventManager._mEvents">
+            <summary>
+            框架事件缓存。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Event.EventManager._mHandleEventQueue">
+            <summary>
+            框架事件处理队列。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.#ctor">
+            <summary>
+            初始化事件管理器类的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Event.EventManager.QsPlusFrameworkModulePriority">
+            <summary>
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.QsPlusFrameworkModuleUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.QsPlusFrameworkModuleShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.EventCount(System.Int32)">
+            <summary>
+            获取指定框架事件的数量。
+            </summary>
+            <param name="id">要获取的框架事件编号。</param>
+            <returns>指定框架事件的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.CheckEvent(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkEventHandler{QsPlus.Framework.Event.GameEventArgs,System.Object})">
+            <summary>
+            检查是否存在指定框架事件。
+            </summary>
+            <param name="id">要检查的框架事件编号。</param>
+            <param name="eventHandler">要检查的框架事件处理函数。</param>
+            <returns>是否存在指定框架事件处理函数。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.SubscribeEvent(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkEventHandler{QsPlus.Framework.Event.GameEventArgs,System.Object})">
+            <summary>
+            订阅框架事件。
+            </summary>
+            <param name="id">要订阅的框架事件编号。</param>
+            <param name="eventHandler">要订阅的框架事件处理函数。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.UnSubscribeEvent(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkEventHandler{QsPlus.Framework.Event.GameEventArgs,System.Object})">
+            <summary>
+            取消订阅框架事件。
+            </summary>
+            <param name="id">要取消订阅的框架事件编号。</param>
+            <param name="eventHandler">要取消订阅的框架事件处理函数。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.BroadcastEvent(System.Object,QsPlus.Framework.Event.GameEventArgs,System.Object)">
+            <summary>
+            广播框架事件 - 线程安全模式。
+            </summary>
+            <param name="sender">事件发送者。</param>
+            <param name="eventArgs">框架事件参数。</param>
+            <param name="args">奇怪的参数。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.BroadcastEventNow(System.Object,QsPlus.Framework.Event.GameEventArgs,System.Object)">
+            <summary>
+            广播框架事件 - 立即广播模式。
+            </summary>
+            <param name="sender">事件发送者。</param>
+            <param name="eventArgs">框架事件参数。</param>
+            <param name="args">奇怪的参数。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.EventManager.InternalHandleEvent(System.Object,QsPlus.Framework.Event.GameEventArgs,System.Object)">
+            <summary>
+            内部处理框架事件函数。
+            </summary>
+            <param name="sender">事件发送者。</param>
+            <param name="eventArgs">框架事件参数。</param>
+            <param name="args">奇怪的参数。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Event.IEventManager">
+            <summary>
+            事件管理器接口。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Event.IEventManager.EventCount(System.Int32)">
+            <summary>
+            获取指定框架事件的数量。
+            </summary>
+            <param name="id">要获取的框架事件编号。</param>
+            <returns>指定框架事件的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Event.IEventManager.CheckEvent(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkEventHandler{QsPlus.Framework.Event.GameEventArgs,System.Object})">
+            <summary>
+            检查是否存在指定框架事件。
+            </summary>
+            <param name="id">要检查的框架事件编号。</param>
+            <param name="eventHandler">要检查的框架事件处理函数。</param>
+            <returns>是否存在指定框架事件处理函数。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Event.IEventManager.SubscribeEvent(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkEventHandler{QsPlus.Framework.Event.GameEventArgs,System.Object})">
+            <summary>
+            订阅框架事件。
+            </summary>
+            <param name="id">要订阅的框架事件编号。</param>
+            <param name="eventHandler">要订阅的框架事件处理函数。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.IEventManager.UnSubscribeEvent(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkEventHandler{QsPlus.Framework.Event.GameEventArgs,System.Object})">
+            <summary>
+            取消订阅框架事件。
+            </summary>
+            <param name="id">要取消订阅的框架事件编号。</param>
+            <param name="eventHandler">要取消订阅的框架事件处理函数。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.IEventManager.BroadcastEvent(System.Object,QsPlus.Framework.Event.GameEventArgs,System.Object)">
+            <summary>
+            广播框架事件 - 线程安全模式。
+            </summary>
+            <param name="sender">事件发送者。</param>
+            <param name="eventArgs">框架事件参数。</param>
+            <param name="args">奇怪的参数。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Event.IEventManager.BroadcastEventNow(System.Object,QsPlus.Framework.Event.GameEventArgs,System.Object)">
+            <summary>
+            广播框架事件 - 立即广播模式。
+            </summary>
+            <param name="sender">事件发送者。</param>
+            <param name="eventArgs">框架事件参数。</param>
+            <param name="args">奇怪的参数。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Event.GameEventArgs">
+            <summary>
+            游戏事件参数基类。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Event.GameEventArgs.EventArgsId">
+            <summary>
+            事件参数编号。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Event.GameEventArgs.UserData">
+            <summary>
+            用户自定义数据。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.Fsm`1">
+            <summary>
+            有限状态机类。
+            </summary>
+            <typeparam name="TFsmOwner">有限状态机持有者类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.#ctor">
+            <summary>
+            初始化有限状态机类的新实例。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.FsmUpdate(System.Single,System.Single)">
+            <summary>
+            有限状态机轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.FsmShutdown">
+            <summary>
+            有限状态机关闭。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.Fsm`1.Owner">
+            <summary>
+            获取有限状态机持有者。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.Fsm`1.OwnerType">
+            <summary>
+            获取状态机持有者类型。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.Fsm`1.FsmStateCount">
+            <summary>
+            获取状态机中状态的数量。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.Fsm`1.CurrentStateName">
+            <summary>
+            获取当前状态机状态名称。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.Fsm`1.CurrentState">
+            <summary>
+            获取当前有限状态机状态。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.Fsm`1.IsRunning">
+            <summary>
+            获取有限状态机是否正在运行。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.Fsm`1.IsCleared">
+            <summary>
+            获取有限状态机是否被销毁。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.Start``1">
+            <summary>
+            开始有限状态机。
+            </summary>
+            <typeparam name="TFsmOwnerState">要开始的有限状态机状态类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.Start(System.Type)">
+            <summary>
+            开始有限状态机。
+            </summary>
+            <param name="stateType">要开始的有限状态机状态类型。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.HasState``1">
+            <summary>
+            是否存在有限状态机状态。
+            </summary>
+            <typeparam name="TFsmOwnerState">要检查的有限状态机状态类型。</typeparam>
+            <returns>是否存在有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.HasState(System.Type)">
+            <summary>
+            是否存在有限状态机状态。
+            </summary>
+            <param name="stateType">要检查的有限状态机状态类型。</param>
+            <returns>是否存在有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.GetState``1">
+            <summary>
+            获取有限状态机状态。
+            </summary>
+            <typeparam name="TFsmOwnerState">要获取的有限状态机状态类型。</typeparam>
+            <returns>要获取的有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.GetState(System.Type)">
+            <summary>
+            获取有限状态机状态。
+            </summary>
+            <param name="stateType">要获取的有限状态机状态类型。</param>
+            <returns>要获取的有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.GetAllStates">
+            <summary>
+            获取有限状态机的所有状态。
+            </summary>
+            <returns>有限状态机的所有状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.Create(`0,QsPlus.Framework.Fsm.FsmStateBase{`0}[])">
+            <summary>
+            创建有限状态机。
+            </summary>
+            <param name="owner">有限状态机持有者。</param>
+            <param name="states">有限状态机状态集合。</param>
+            <returns>创建的有限状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.Create(`0,System.Collections.Generic.List{QsPlus.Framework.Fsm.FsmStateBase{`0}})">
+            <summary>
+            创建有限状态机。
+            </summary>
+            <param name="owner">有限状态机持有者。</param>
+            <param name="states">有限状态机状态集合。</param>
+            <returns>创建的有限状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.ChangeState``1">
+            <summary>
+            切换当前有限状态机状态。
+            </summary>
+            <typeparam name="TFsmOwnerState">要切换到的有限状态机状态类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.Fsm`1.ChangeState(System.Type)">
+            <summary>
+            切换当前有限状态机状态。
+            </summary>
+            <param name="stateType">要切换到的有限状态机状态类型。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.FsmBase">
+            <summary>
+            状态机基类。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.FsmBase.OwnerType">
+            <summary>
+            获取状态机持有者类型。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.FsmBase.FsmStateCount">
+            <summary>
+            获取状态机中状态的数量。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.FsmBase.CurrentStateName">
+            <summary>
+            获取当前状态机状态名称。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.FsmBase.IsRunning">
+            <summary>
+            获取有限状态机是否正在运行。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.FsmBase.IsCleared">
+            <summary>
+            获取有限状态机是否被清理。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmBase.FsmUpdate(System.Single,System.Single)">
+            <summary>
+            状态机轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmBase.FsmShutdown">
+            <summary>
+            状态机关闭。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.FsmManager">
+            <summary>
+            状态机管理器类。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.#ctor">
+            <summary>
+            初始化有限状态机管理器的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.FsmManager.QsPlusFrameworkModulePriority">
+            <summary> 
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.QsPlusFrameworkModuleUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.QsPlusFrameworkModuleShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.FsmManager.FsmCount">
+            <summary>
+            获取状态机数量。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.HasFsm``1">
+            <summary>
+            检查是否存在状态机。
+            </summary>
+            <typeparam name="TFsm">状态机持有者类型。</typeparam>
+            <returns>是否存在状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.HasFsm(System.Type)">
+            <summary>
+            检查是否存在状态机。
+            </summary>
+            <param name="ownerType">状态机持有者类型。</param>
+            <returns>是否存在状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.GetFsm``1">
+            <summary>
+            获取状态机。
+            </summary>
+            <typeparam name="TFsm">状态机持有者类型。</typeparam>
+            <returns>要获取的状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.GetFsm(System.Type)">
+            <summary>
+            获取状态机。
+            </summary>
+            <param name="ownerType">状态机持有者类型。</param>
+            <returns>要获取的状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.GetAllFsm">
+            <summary>
+            获取所有状态机。
+            </summary>
+            <returns>所有状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.CreateFsm``1(``0,QsPlus.Framework.Fsm.FsmStateBase{``0}[])">
+            <summary>
+            创建有限状态机。
+            </summary>
+            <typeparam name="TFsm">有限状态机持有者类型。</typeparam>
+            <param name="owner">有限状态机持有者。</param>
+            <param name="states">有限状态机状态集合。</param>
+            <returns>要创建的有限状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.CreateFsm``1(``0,System.Collections.Generic.List{QsPlus.Framework.Fsm.FsmStateBase{``0}})">
+            <summary>
+            创建有限状态机。
+            </summary>
+            <typeparam name="TFsm">有限状态机持有者类型。</typeparam>
+            <param name="owner">有限状态机持有者。</param>
+            <param name="states">有限状态机状态集合。</param>
+            <returns>要创建的有限状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.DestroyFsm``1(QsPlus.Framework.Fsm.IFsm{``0})">
+            <summary>
+            销毁状态机。
+            </summary>
+            <typeparam name="TFsm">状态机持有者类型。</typeparam>
+            <param name="fsm">要销毁的状态机。</param>
+            <returns>是否销毁状态机成功。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.DestroyFsm(QsPlus.Framework.Fsm.FsmBase)">
+            <summary>
+            销毁状态机。
+            </summary>
+            <param name="fsm">要销毁的状态机。</param>
+            <returns>是否销毁状态机成功。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.InternalHasFsm(System.Type)">
+            <summary>
+            内部检查是否存在状态机。
+            </summary>
+            <param name="fsm">状态机类型。</param>
+            <returns></returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.InternalGetFsm(System.Type)">
+            <summary>
+            内部获取状态机。
+            </summary>
+            <param name="fsm">状态机类型。</param>
+            <returns></returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.InternalDestroyFsm(System.Type)">
+            <summary>
+            内部销毁状态机。
+            </summary>
+            <param name="fsm">状态机类型。</param>
+            <returns></returns>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.FsmStateBase`1">
+            <summary>
+            有限状态机状态基类。
+            </summary>
+            <typeparam name="TFsmOwner">有限状态机持有者类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmStateBase`1.OnInit(QsPlus.Framework.Fsm.IFsm{`0})">
+            <summary>
+            有限状态机状态初始化时调用。
+            </summary>
+            <param name="fsm">有限状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmStateBase`1.OnEnter(QsPlus.Framework.Fsm.IFsm{`0})">
+            <summary>
+            有限状态机状态进入时调用。
+            </summary>
+            <param name="fsm">有限状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmStateBase`1.OnUpdate(QsPlus.Framework.Fsm.IFsm{`0},System.Single,System.Single)">
+            <summary>
+            有限状态机状态轮询时调用。
+            </summary>
+            <param name="fsm">有限状态机引用。</param>
+            <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
+            <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmStateBase`1.OnLeave(QsPlus.Framework.Fsm.IFsm{`0})">
+            <summary>
+            有限状态机状态离开时调用。
+            </summary>
+            <param name="fsm">有限状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmStateBase`1.OnClear(QsPlus.Framework.Fsm.IFsm{`0})">
+            <summary>
+            有限状态机状态被清理时调用。
+            </summary>
+            <param name="fsm">有限状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmStateBase`1.ChangeState``1(QsPlus.Framework.Fsm.IFsm{`0})">
+            <summary>
+            切换当前有限状态机状态。
+            </summary>
+            <typeparam name="TFsmOwnerState">要切换到的有限状态机状态类型。</typeparam>
+            <param name="fsm">有限状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmStateBase`1.ChangeState(QsPlus.Framework.Fsm.IFsm{`0},System.Type)">
+            <summary>
+            切换当前有限状态机状态。
+            </summary>
+            <param name="fsm">有限状态机引用。</param>
+            <param name="stateType">要切换到的有限状态机状态类型。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.IFsm`1">
+            <summary>
+            有限状态机接口。
+            </summary>
+            <typeparam name="TFsmOwner">有限状态机持有者类型。</typeparam>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IFsm`1.Owner">
+            <summary>
+            获取有限状态机持有者。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IFsm`1.FsmStateCount">
+            <summary>
+            获取有限状态机中状态的数量。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IFsm`1.CurrentState">
+            <summary>
+            获取当前有限状态机状态。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IFsm`1.IsRunning">
+            <summary>
+            获取有限状态机是否正在运行。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IFsm`1.IsCleared">
+            <summary>
+            获取有限状态机是否被销毁。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsm`1.Start``1">
+            <summary>
+            开始有限状态机。
+            </summary>
+            <typeparam name="TFsmOwnerState">要开始的有限状态机状态类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsm`1.Start(System.Type)">
+            <summary>
+            开始有限状态机。
+            </summary>
+            <param name="stateType">要开始的有限状态机状态类型。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsm`1.HasState``1">
+            <summary>
+            是否存在有限状态机状态。
+            </summary>
+            <typeparam name="TFsmOwnerState">要检查的有限状态机状态类型。</typeparam>
+            <returns>是否存在有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsm`1.HasState(System.Type)">
+            <summary>
+            是否存在有限状态机状态。
+            </summary>
+            <param name="stateType">要检查的有限状态机状态类型。</param>
+            <returns>是否存在有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsm`1.GetState``1">
+            <summary>
+            获取有限状态机状态。
+            </summary>
+            <typeparam name="TFsmOwnerState">要获取的有限状态机状态类型。</typeparam>
+            <returns>要获取的有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsm`1.GetState(System.Type)">
+            <summary>
+            获取有限状态机状态。
+            </summary>
+            <param name="stateType">要获取的有限状态机状态类型。</param>
+            <returns>要获取的有限状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsm`1.GetAllStates">
+            <summary>
+            获取有限状态机的所有状态。
+            </summary>
+            <returns>有限状态机的所有状态。</returns>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.IFsmManager">
+            <summary>
+            状态机管理器接口。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IFsmManager.FsmCount">
+            <summary>
+            获取状态机数量。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.HasFsm``1">
+            <summary>
+            检查是否存在状态机。
+            </summary>
+            <typeparam name="TFsm">状态机持有者类型。</typeparam>
+            <returns>是否存在状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.HasFsm(System.Type)">
+            <summary>
+            检查是否存在状态机。
+            </summary>
+            <param name="ownerType">状态机持有者类型。</param>
+            <returns>是否存在状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.GetFsm``1">
+            <summary>
+            获取状态机。
+            </summary>
+            <typeparam name="TFsm">状态机持有者类型。</typeparam>
+            <returns>要获取的状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.GetFsm(System.Type)">
+            <summary>
+            获取状态机。
+            </summary>
+            <param name="ownerType">状态机持有者类型。</param>
+            <returns>要获取的状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.GetAllFsm">
+            <summary>
+            获取所有状态机。
+            </summary>
+            <returns>所有状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.CreateFsm``1(``0,QsPlus.Framework.Fsm.FsmStateBase{``0}[])">
+            <summary>
+            创建有限状态机。
+            </summary>
+            <typeparam name="TFsm">有限状态机持有者类型。</typeparam>
+            <param name="owner">有限状态机持有者。</param>
+            <param name="states">有限状态机状态集合。</param>
+            <returns>要创建的有限状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.CreateFsm``1(``0,System.Collections.Generic.List{QsPlus.Framework.Fsm.FsmStateBase{``0}})">
+            <summary>
+            创建有限状态机。
+            </summary>
+            <typeparam name="TFsm">有限状态机持有者类型。</typeparam>
+            <param name="owner">有限状态机持有者。</param>
+            <param name="states">有限状态机状态集合。</param>
+            <returns>要创建的有限状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.DestroyFsm``1(QsPlus.Framework.Fsm.IFsm{``0})">
+            <summary>
+            销毁状态机。
+            </summary>
+            <typeparam name="TFsm">状态机持有者类型。</typeparam>
+            <param name="fsm">要销毁的状态机。</param>
+            <returns>是否销毁状态机成功。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.DestroyFsm(QsPlus.Framework.Fsm.FsmBase)">
+            <summary>
+            销毁状态机。
+            </summary>
+            <param name="fsm">要销毁的状态机。</param>
+            <returns>是否销毁状态机成功。</returns>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.IPushDownFsm`1">
+            <summary>
+            下推状态机接口。
+            </summary>
+            <typeparam name="TPushDownFsmOwner">下推状态机持有者类型。</typeparam>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IPushDownFsm`1.Owner">
+            <summary>
+            获取下推状态机持有者。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IPushDownFsm`1.FsmStateCount">
+            <summary>
+            获取下推状态机中状态的数量。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IPushDownFsm`1.FsmStackStateCount">
+            <summary>
+            获取下推状态机中栈区状态的数量。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IPushDownFsm`1.CurrentStateName">
+            <summary>
+            获取当前下推状态机状态名称。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IPushDownFsm`1.IsRunning">
+            <summary>
+            获取下推状态机是否正在运行。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.IPushDownFsm`1.IsCleared">
+            <summary>
+            获取下推状态机是否被销毁。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IPushDownFsm`1.Start``1">
+            <summary>
+            开始下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsmOwnerState">要开始的下推状态机状态类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IPushDownFsm`1.Start(System.Type)">
+            <summary>
+            开始下推状态机。
+            </summary>
+            <param name="stateType">要开始的下推状态机状态类型。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IPushDownFsm`1.HasState``1">
+            <summary>
+            是否存在下推状态机状态。
+            </summary>
+            <typeparam name="TPushDownFsmOwnerState">要检查的下推状态机状态类型。</typeparam>
+            <returns>是否存在下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IPushDownFsm`1.HasState(System.Type)">
+            <summary>
+            是否存在下推状态机状态。
+            </summary>
+            <param name="stateType">要检查的下推状态机状态类型。</param>
+            <returns>是否存在下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IPushDownFsm`1.GetState``1">
+            <summary>
+            获取下推状态机状态。
+            </summary>
+            <typeparam name="TPushDownFsmOwnerState">要获取的下推状态机状态类型。</typeparam>
+            <returns>要获取的下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IPushDownFsm`1.GetState(System.Type)">
+            <summary>
+            获取下推状态机状态。
+            </summary>
+            <param name="stateType">要获取的下推状态机状态类型。</param>
+            <returns>要获取的下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IPushDownFsm`1.GetAllStates">
+            <summary>
+            获取下推状态机的所有状态。
+            </summary>
+            <returns>下推状态机的所有状态。</returns>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.PushDownFsm`1">
+            <summary>
+            下推状态机类。
+            </summary>
+            <typeparam name="TPushDownFsmOwner">下推状态机持有者类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.#ctor">
+            <summary>
+            初始化下推状态机类的新实例。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.FsmUpdate(System.Single,System.Single)">
+            <summary>
+            下推状态机轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.FsmShutdown">
+            <summary>
+            下推状态机关闭。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.Owner">
+            <summary>
+            获取下推状态机持有者。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.OwnerType">
+            <summary>
+            获取状态机持有者类型。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.FsmStateCount">
+            <summary>
+            获取状态机中状态的数量。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.FsmStackStateCount">
+            <summary>
+            获取下推状态机中栈区状态的数量。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.CurrentStateName">
+            <summary>
+            获取当前临时位状态机状态名称。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.CurrentState">
+            <summary>
+            获取当前临时位下推状态机状态。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.IsRunning">
+            <summary>
+            获取下推状态机是否正在运行。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Fsm.PushDownFsm`1.IsCleared">
+            <summary>
+            获取下推状态机是否被销毁。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.Start``1">
+            <summary>
+            开始下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsmOwnerState">要开始的下推状态机状态类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.Start(System.Type)">
+            <summary>
+            开始下推状态机。
+            </summary>
+            <param name="stateType">要开始的下推状态机状态类型。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.HasState``1">
+            <summary>
+            是否存在下推状态机状态。
+            </summary>
+            <typeparam name="TPushDownFsmOwnerState">要检查的下推状态机状态类型。</typeparam>
+            <returns>是否存在下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.HasState(System.Type)">
+            <summary>
+            是否存在下推状态机状态。
+            </summary>
+            <param name="stateType">要检查的下推状态机状态类型。</param>
+            <returns>是否存在下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.GetState``1">
+            <summary>
+            获取下推状态机状态。
+            </summary>
+            <typeparam name="TPushDownFsmOwnerState">要获取的下推状态机状态类型。</typeparam>
+            <returns>要获取的下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.GetState(System.Type)">
+            <summary>
+            获取下推状态机状态。
+            </summary>
+            <param name="stateType">要获取的下推状态机状态类型。</param>
+            <returns>要获取的下推状态机状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.GetAllStates">
+            <summary>
+            获取下推状态机的所有状态。
+            </summary>
+            <returns>下推状态机的所有状态。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.Create(`0,QsPlus.Framework.Fsm.PushDownFsmStateBase{`0}[])">
+            <summary>
+            创建下推状态机。
+            </summary>
+            <param name="owner">下推状态机持有者。</param>
+            <param name="states">下推状态机状态集合。</param>
+            <returns>创建的下推状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.Create(`0,System.Collections.Generic.List{QsPlus.Framework.Fsm.PushDownFsmStateBase{`0}})">
+            <summary>
+            创建下推状态机。
+            </summary>
+            <param name="owner">下推状态机持有者。</param>
+            <param name="states">下推状态机状态集合。</param>
+            <returns>创建的下推状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.PushDownState``1">
+            <summary>
+            下推当前临时位的下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsmOwnerState">要压入的下推状态机状态类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.PushDownState(System.Type)">
+            <summary>
+            下推当前临时位的下推状态机。
+            </summary>
+            <param name="stateType">要压入的下推状态机状态类型。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsm`1.PopUpState">
+            <summary>
+            上移当前栈区栈顶的下推状态机到临时位。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Fsm.PushDownFsmStateBase`1">
+            <summary>
+            下推状态机状态基类。
+            </summary>
+            <typeparam name="TPushDownFsmOwner">下推状态机持有者类型。</typeparam>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.OnInit(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            下推状态机状态初始化时调用。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.OnEnter(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            下推状态机状态被推入临时位时调用。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.OnPause(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            下推状态机状态被压入栈区时调用。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.OnUpdate(QsPlus.Framework.Fsm.IPushDownFsm{`0},System.Single,System.Single)">
+            <summary>
+            下推状态机状态轮询时调用。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+            <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
+            <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.OnResume(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            下推状态机状态从栈区被回滚到临时位时调用。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.OnLeave(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            下推状态机状态离开时调用。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.OnClear(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            下推状态机状态被清理时调用。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.PushDownState``1(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            下推当前临时位的下推状态机。
+            </summary>
+            <typeparam name="TFsmState">要压入的下推状态机状态类型。</typeparam>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.PushDownState(QsPlus.Framework.Fsm.IPushDownFsm{`0},System.Type)">
+            <summary>
+            下推当前临时位的下推状态机。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+            <param name="stateType">要压入的下推状态机状态类型。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.PushDownFsmStateBase`1.PopUpState(QsPlus.Framework.Fsm.IPushDownFsm{`0})">
+            <summary>
+            上移当前栈区栈顶的下推状态机到临时位。
+            </summary>
+            <param name="fsm">下推状态机引用。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Message.IMessageManager">
+            <summary>
+            消息管理器接口。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Message.IMessageManager.MessageCount(System.Int32)">
+            <summary>
+            获取指定框架消息的数量。
+            </summary>
+            <param name="id">要获取的框架消息编号。</param>
+            <returns>指定框架消息的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Message.IMessageManager.CheckMessage(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkAction{System.Object})">
+            <summary>
+            检查是否存在指定框架消息。
+            </summary>
+            <param name="id">要检查的框架消息编号。</param>
+            <param name="message">要检查的框架消息。</param>
+            <returns>是否存在指定框架消息。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Message.IMessageManager.SubscribeMessage(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkAction{System.Object})">
+            <summary>
+            订阅框架消息。
+            </summary>
+            <param name="id">要订阅的框架消息编号。</param>
+            <param name="message">要订阅的框架消息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.IMessageManager.UnSubscribeMessage(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkAction{System.Object})">
+            <summary>
+            取消订阅框架消息。
+            </summary>
+            <param name="id">要取消订阅的消息编号。</param>
+            <param name="message">要取消订阅的消息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.IMessageManager.SendMessage(System.Int32,System.Object)">
+            <summary>
+            发送框架消息 - 线程安全模式。
+            </summary>
+            <param name="id">要发送消息的编号。</param>
+            <param name="message">要发送的信息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.IMessageManager.SendMessageNow(System.Int32,System.Object)">
+            <summary>
+            发送框架消息 - 立即发送模式。
+            </summary>
+            <param name="id">要发送消息的编号。</param>
+            <param name="message">要发送的信息。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Message.Message">
+            <summary>
+            框架消息类。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Message.Message.MessageId">
+            <summary>
+            用户消息编号。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Message.Message.UserMessageInfo">
+            <summary>
+            用户消息信息。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Message.Message.#ctor">
+            <summary>
+            初始化框架消息类的新实例。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Message.Message.Create(System.Int32,System.Object)">
+            <summary>
+            创建框架消息类的新实例。
+            </summary>
+            <param name="messageId">消息编号。</param>
+            <param name="messageInfo">消息信息。</param>
+            <returns>创建的框架消息类。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Message.Message.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Message.MessageManager">
+            <summary>
+            消息管理器类。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Message.MessageManager._mMessages">
+            <summary>
+            消息缓存。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Message.MessageManager._mHandleMessageQueue">
+            <summary>
+            框架消息处理队列。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.#ctor">
+            <summary>
+            初始化消息管理器类的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Message.MessageManager.QsPlusFrameworkModulePriority">
+            <summary>
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.QsPlusFrameworkModuleUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.QsPlusFrameworkModuleShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.MessageCount(System.Int32)">
+            <summary>
+            获取指定框架消息的数量。
+            </summary>
+            <param name="id">要获取的框架消息编号。</param>
+            <returns>指定框架消息的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.CheckMessage(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkAction{System.Object})">
+            <summary>
+            检查是否存在指定框架消息。
+            </summary>
+            <param name="id">要检查的框架消息编号。</param>
+            <param name="message">要检查的框架消息。</param>
+            <returns>是否存在指定框架消息。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.SubscribeMessage(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkAction{System.Object})">
+            <summary>
+            订阅框架消息。
+            </summary>
+            <param name="id">要订阅的框架消息编号。</param>
+            <param name="message">要订阅的框架消息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.UnSubscribeMessage(System.Int32,QsPlus.Framework.Common.QsPlusFrameworkAction{System.Object})">
+            <summary>
+            取消订阅框架消息。
+            </summary>
+            <param name="id">要取消订阅的消息编号。</param>
+            <param name="message">要取消订阅的消息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.SendMessage(System.Int32,System.Object)">
+            <summary>
+            发送框架消息 - 线程安全模式。
+            </summary>
+            <param name="id">要发送消息的编号。</param>
+            <param name="message">要发送的信息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.SendMessageNow(System.Int32,System.Object)">
+            <summary>
+            发送框架消息 - 立即发送模式。
+            </summary>
+            <param name="id">要发送消息的编号。</param>
+            <param name="message">要发送的信息。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Message.MessageManager.InternalHandleEvent(System.Int32,System.Object)">
+            <summary>
+            内部处理框架事件函数。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Reference.InternalReferenceCache">
+            <summary>
+            内部引用缓存类。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Reference.InternalReferenceCache._mReferenceType">
+            <summary>
+            引用缓存类型。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Reference.InternalReferenceCache._mReferences">
+            <summary>
+            引用缓存队列。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferenceCache.#ctor(System.Type)">
+            <summary>
+            初始化内部引用缓存类的新实例。
+            </summary>
+            <param name="referenceType">引用缓存类型。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferenceCache.CheckReference">
+            <summary>
+            检查是否存在引用。
+            </summary>
+            <returns>是否存在引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferenceCache.AcquireReference">
+            <summary>
+            获取引用。
+            </summary>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferenceCache.ReleaseReference(QsPlus.Framework.Reference.IReference)">
+            <summary>
+            释放引用。
+            </summary>
+            <param name="reference">引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferenceCache.ClearInternalReferenceCache">
+            <summary>
+            清理内部引用缓存。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Reference.IReference">
+            <summary>
+            引用接口。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReference.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.Reference.IReferenceManager">
+            <summary>
+            引用管理器接口。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.ReferenceCount``1">
+            <summary>
+            获取指定类型引用的数量。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>指定类型引用的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.ReferenceCount(System.Type)">
+            <summary>
+            获取指定类型引用的数量。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>指定类型引用的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.CheckReference``1">
+            <summary>
+            检查是否存在指定类型引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>是否存在指定类型引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.CheckReference(System.Type)">
+            <summary>
+            检查是否存在指定类型引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>是否存在指定类型引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.AcquireReference``1">
+            <summary>
+            获取指定类型引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.AcquireReference(System.Type)">
+            <summary>
+            获取指定类型引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.ReleaseReference(QsPlus.Framework.Reference.IReference)">
+            <summary>
+            释放指定引用。
+            </summary>
+            <param name="reference">引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.AddReference``1(System.Int32)">
+            <summary>
+            创建并缓存多个指定类型的引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.AddReference(System.Type,System.Int32)">
+            <summary>
+            创建并缓存多个指定类型的引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.RemoveReference``1(System.Int32)">
+            <summary>
+            移除多个指定类型的引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.IReferenceManager.RemoveReference(System.Type,System.Int32)">
+            <summary>
+            移除多个指定类型的引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <param name="count">数量。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Reference.ReferenceCache">
+            <summary>
+            引用缓存。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Reference.ReferenceCache._mReferenceType">
+            <summary>
+            引用缓存类型。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Reference.ReferenceCache._mReferences">
+            <summary>
+            引用缓存队列。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.#ctor(System.Type)">
+            <summary>
+            初始化引用缓存类的新实例。
+            </summary>
+            <param name="referenceType">引用缓存类型。</param>
+        </member>
+        <member name="P:QsPlus.Framework.Reference.ReferenceCache.ReferenceCount">
+            <summary>
+            获取引用的数量。
+            </summary>
+            <returns>引用的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.ReferenceCacheUpdate(System.Single,System.Single)">
+            <summary>
+            引用缓存轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.ReferenceCacheShutdown">
+            <summary>
+            引用缓存关闭。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.CheckReference">
+            <summary>
+            检查是否存在引用。
+            </summary>
+            <returns>是否存在引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.AcquireReference">
+            <summary>
+            获取引用。
+            </summary>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.ReleaseReference(QsPlus.Framework.Reference.IReference)">
+            <summary>
+            释放引用。
+            </summary>
+            <param name="reference">引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.AddReference(System.Int32)">
+            <summary>
+            创建并缓存多个引用。
+            </summary>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceCache.RemoveReference(System.Int32)">
+            <summary>
+            移除多个引用。
+            </summary>
+            <param name="count">数量。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Reference.ReferenceManager">
+            <summary>
+            引用管理器类。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Reference.ReferenceManager._mReferences">
+            <summary>
+            引用缓存。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.#ctor">
+            <summary>
+            初始化引用管理器类的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Reference.ReferenceManager.QsPlusFrameworkModulePriority">
+            <summary>
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.QsPlusFrameworkModuleUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.QsPlusFrameworkModuleShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.ReferenceCount``1">
+            <summary>
+            获取指定类型引用的数量。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>指定类型引用的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.ReferenceCount(System.Type)">
+            <summary>
+            获取指定类型引用的数量。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>指定类型引用的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.CheckReference``1">
+            <summary>
+            检查是否存在指定类型引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>是否存在指定类型引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.CheckReference(System.Type)">
+            <summary>
+            检查是否存在指定类型引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>是否存在指定类型引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.AcquireReference``1">
+            <summary>
+            获取指定类型引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.AcquireReference(System.Type)">
+            <summary>
+            获取指定类型引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.ReleaseReference(QsPlus.Framework.Reference.IReference)">
+            <summary>
+            释放指定类型引用。
+            </summary>
+            <param name="reference">引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.AddReference``1(System.Int32)">
+            <summary>
+            创建并缓存多个指定类型的引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.AddReference(System.Type,System.Int32)">
+            <summary>
+            创建并缓存多个指定类型的引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.RemoveReference``1(System.Int32)">
+            <summary>
+            移除多个指定类型的引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.RemoveReference(System.Type,System.Int32)">
+            <summary>
+            移除多个指定类型的引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <param name="count">数量。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.InternalGetReferenceCache(System.Type)">
+            <summary>
+            内部获取指定类型引用的缓存。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>指定类型引用的缓存。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.ReferenceManager.InternalCheckReferenceType(System.Type)">
+            <summary>
+            内部校验引用类型。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+        </member>
+        <member name="T:QsPlus.Framework.Reference.InternalReferencePool">
+            <summary>
+            内部引用池类。
+            </summary>
+        </member>
+        <member name="F:QsPlus.Framework.Reference.InternalReferencePool.InternalReferences">
+            <summary>
+            内部引用缓存。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferencePool.CheckReference``1">
+            <summary>
+            获取指定类型引用的数量。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>指定类型引用的数量。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferencePool.CheckReference(System.Type)">
+            <summary>
+            检查是否存在指定类型引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>是否存在指定类型引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferencePool.AcquireReference``1">
+            <summary>
+            获取指定类型引用。
+            </summary>
+            <typeparam name="TReference">引用类型。</typeparam>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferencePool.AcquireReference(System.Type)">
+            <summary>
+            获取指定类型引用。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>要获取的引用。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferencePool.ReleaseReference(QsPlus.Framework.Reference.IReference)">
+            <summary>
+            释放指定类型引用。
+            </summary>
+            <param name="reference">引用。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferencePool.ClearReferences">
+            <summary>
+            清理所有引用。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Reference.InternalReferencePool.InternalGetReferenceCache(System.Type)">
+            <summary>
+            内部获取指定类型引用的缓存。
+            </summary>
+            <param name="referenceType">引用类型。</param>
+            <returns>指定类型引用的缓存。</returns>
+        </member>
+        <member name="T:QsPlus.Framework.UI.CloseUiFormCompleteEventArgs">
+            <summary>
+            关闭用户界面完成事件参数类。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.CloseUiFormCompleteEventArgs.#ctor">
+            <summary>
+            初始化关闭用户界面完成事件参数类的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.CloseUiFormCompleteEventArgs.UiForm">
+            <summary>
+            获取关闭成功的界面。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.CloseUiFormCompleteEventArgs.UserData">
+            <summary>
+            获取用户自定义数据。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.CloseUiFormCompleteEventArgs.Create(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            创建关闭用户界面完成事件。
+            </summary>
+            <param name="uiForm">加载成功的界面。</param>
+            <param name="userData">用户自定义数据。</param>
+            <returns>创建的打开界面成功事件。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.UI.CloseUiFormCompleteEventArgs.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.UI.IUiFormHelper">
+            <summary>
+            用户界面辅助器接口。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.UI.IUiManager">
+            <summary>
+            用户界面管理器接口。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.HasUiForm(System.Int32)">
+            <summary>
+            是否存在用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.GetUiForm(System.Int32)">
+            <summary>
+            获取用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.OpenUiForm(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            打开用户界面。
+            </summary>
+            <param name="uiForm">要打开的用户界面。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.OpenUiForm(System.Int32,System.Object)">
+            <summary>
+            打开用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.CloseUiForm(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            关闭用户界面。
+            </summary>
+            <param name="uiForm">要关闭的用户界面。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.CloseUiForm(System.Int32,System.Object)">
+            <summary>
+            关闭用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.RefocusUiForm(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            激活用户界面。
+            </summary>
+            <param name="uiForm">要激活的用户界面。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.IUiManager.RefocusUiForm(System.Int32,System.Object)">
+            <summary>
+            激活用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="T:QsPlus.Framework.UI.OpenUiFormFailureEventArgs">
+            <summary>
+            打开用户界面失败事件参数类。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.OpenUiFormFailureEventArgs.#ctor">
+            <summary>
+            初始化打开用户界面失败事件参数类的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.OpenUiFormFailureEventArgs.SerialId">
+            <summary>
+            获取用户界面序列编号。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.OpenUiFormFailureEventArgs.UiFormAssetName">
+            <summary>
+            获取用户界面资源名称。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.OpenUiFormFailureEventArgs.UserData">
+            <summary>
+            获取用户自定义数据。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.OpenUiFormFailureEventArgs.Create(System.Int32,System.String,System.Object)">
+            <summary>
+            创建打开用户界面失败事件。
+            </summary>
+            <param name="serialId">用户界面序列编号。</param>
+            <param name="uiFormAssetName">界面资源名称。</param>
+            <param name="userData">用户自定义数据。</param>
+            <returns>创建的打开用户界面失败事件。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.UI.OpenUiFormFailureEventArgs.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.UI.OpenUiFormSuccessEventArgs">
+            <summary>
+            打开用户界面成功事件参数类。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.OpenUiFormSuccessEventArgs.#ctor">
+            <summary>
+            初始化打开用户界面成功事件参数类的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.OpenUiFormSuccessEventArgs.UiForm">
+            <summary>
+            获取打开成功的界面。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.OpenUiFormSuccessEventArgs.UserData">
+            <summary>
+            获取用户自定义数据。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.OpenUiFormSuccessEventArgs.Create(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            创建打开界面成功事件。
+            </summary>
+            <param name="uiForm">加载成功的界面。</param>
+            <param name="userData">用户自定义数据。</param>
+            <returns>创建的打开界面成功事件。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.UI.OpenUiFormSuccessEventArgs.ClearReference">
+            <summary>
+            清理引用(释放时调用)。
+            </summary>
+        </member>
+        <member name="T:QsPlus.Framework.UI.UiManager">
+            <summary>
+            用户界面管理器类。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.#ctor">
+            <summary>
+            初始化用户界面管理器类的新实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.UiManager.QsPlusFrameworkModulePriority">
+            <summary>
+            框架模块优先级。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.QsPlusFrameworkModuleUpdate(System.Single,System.Single)">
+            <summary>
+            框架模块轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.QsPlusFrameworkModuleShutdown">
+            <summary>
+            框架模块关闭。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.UI.UiManager.GetAllUiFromCount">
+            <summary>
+            获取当前所有用户界面数量。
+            </summary>
+        </member>
+        <member name="E:QsPlus.Framework.UI.UiManager.OpenUiFormSuccess">
+            <summary>
+            打开界面成功事件。
+            </summary>
+        </member>
+        <member name="E:QsPlus.Framework.UI.UiManager.OpenUiFormFailure">
+            <summary>
+            打开界面失败事件。
+            </summary>
+        </member>
+        <member name="E:QsPlus.Framework.UI.UiManager.CloseUiFormComplete">
+            <summary>
+            关闭界面完成事件。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.HasUiForm(System.Int32)">
+            <summary>
+            是否存在用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.GetUiForm(System.Int32)">
+            <summary>
+            获取用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.OpenUiForm(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            打开用户界面。
+            </summary>
+            <param name="uiForm">要打开的用户界面。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.OpenUiForm(System.Int32,System.Object)">
+            <summary>
+            打开用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.CloseUiForm(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            关闭用户界面。
+            </summary>
+            <param name="uiForm">要关闭的用户界面。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.CloseUiForm(System.Int32,System.Object)">
+            <summary>
+            关闭用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.RefocusUiForm(QsPlus.Framework.Ui.IUiForm,System.Object)">
+            <summary>
+            激活用户界面。
+            </summary>
+            <param name="uiForm">要激活的用户界面。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.RefocusUiForm(System.Int32,System.Object)">
+            <summary>
+            激活用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.UI.UiManager.InternalGetUiForm(System.Int32)">
+            <summary>
+            内部获取用户界面。
+            </summary>
+            <param name="uiFormId">用户界面编号。</param>
+            <returns></returns>
+        </member>
+        <member name="T:QsPlus.Framework.Ui.IUiForm">
+            <summary>
+            用户界面接口。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Ui.IUiForm.UiFormId">
+            <summary>
+            获取用户界面序列编号。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Ui.IUiForm.Handle">
+            <summary>
+            获取用户界面实例。
+            </summary>
+        </member>
+        <member name="P:QsPlus.Framework.Ui.IUiForm.DepthInUiForm">
+            <summary>
+            获取用户界面的深度。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnInit(System.Int32,System.Object)">
+            <summary>
+            初始化用户界面。
+            </summary>
+            <param name="uiFormId">用户界面序列编号。</param>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnOpen(System.Object)">
+            <summary>
+            用户界面打开。
+            </summary>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnUpdate(System.Single,System.Single)">
+            <summary>
+            用户界面轮询。
+            </summary>
+            <param name="logicTime">逻辑时间。</param>
+            <param name="actualTime">真实时间。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnPause">
+            <summary>
+            用户界面暂停。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnResume">
+            <summary>
+            用户界面暂停恢复。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnCover">
+            <summary>
+            用户界面遮挡。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnReveal">
+            <summary>
+            用户界面遮挡恢复。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnRefocus(System.Object)">
+            <summary>
+            用户界面激活。
+            </summary>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnClose(System.Object)">
+            <summary>
+            用户界面关闭。
+            </summary>
+            <param name="userData">用户自定义数据。</param>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnRecycle">
+            <summary>
+            用户界面回收。
+            </summary>
+        </member>
+        <member name="M:QsPlus.Framework.Ui.IUiForm.OnDepthChanged(System.Int32)">
+            <summary>
+            用户界面深度改变。
+            </summary>
+            <param name="uiFormDepth">用户界面深度。</param>
+        </member>
+    </members>
+</doc>

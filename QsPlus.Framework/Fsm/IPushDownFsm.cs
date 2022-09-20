@@ -24,6 +24,11 @@ namespace QsPlus.Framework.Fsm
         /// 获取下推状态机中状态的数量。
         /// </summary>
         int FsmStateCount { get; }
+        
+        /// <summary>
+        /// 获取下推状态机中栈区状态的数量。
+        /// </summary>
+        int FsmStackStateCount { get; }
 
         /// <summary>
         /// 获取当前下推状态机状态名称。
