@@ -106,7 +106,7 @@ namespace QsPlus.Framework.Fsm
         /// 上移当前栈区栈顶的下推状态机到临时位。
         /// </summary>
         /// <param name="fsm">下推状态机引用。</param>
-        internal void PopUpState(IPushDownFsm<TPushDownFsmOwner> fsm)
+        protected void PopUpState(IPushDownFsm<TPushDownFsmOwner> fsm)
         {
             PushDownFsm<TPushDownFsmOwner> pushDownFsmImplement = (PushDownFsm<TPushDownFsmOwner>) fsm;
             pushDownFsmImplement.PopUpState();

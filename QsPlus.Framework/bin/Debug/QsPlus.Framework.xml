@@ -702,7 +702,7 @@
             框架模块关闭。
             </summary>
         </member>
-        <member name="P:QsPlus.Framework.Fsm.FsmManager.FsmCount">
+        <member name="P:QsPlus.Framework.Fsm.FsmManager.FsmAllCount">
             <summary>
             获取状态机数量。
             </summary>
@@ -727,6 +727,13 @@
             </summary>
             <typeparam name="TFsm">状态机持有者类型。</typeparam>
             <returns>要获取的状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.GetPushDownFsm``1">
+            <summary>
+            获取下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <returns>要获取的下推状态机。</returns>
         </member>
         <member name="M:QsPlus.Framework.Fsm.FsmManager.GetFsm(System.Type)">
             <summary>
@@ -759,6 +766,24 @@
             <param name="states">有限状态机状态集合。</param>
             <returns>要创建的有限状态机。</returns>
         </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.CreatePushDownFsm``1(``0,QsPlus.Framework.Fsm.PushDownFsmStateBase{``0}[])">
+            <summary>
+            创建下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <param name="owner">下推状态机持有者。</param>
+            <param name="states">下推状态机状态集合。</param>
+            <returns>要创建的下推状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.CreatePushDownFsm``1(``0,System.Collections.Generic.List{QsPlus.Framework.Fsm.PushDownFsmStateBase{``0}})">
+            <summary>
+            创建下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <param name="owner">下推状态机持有者。</param>
+            <param name="states">下推状态机状态集合。</param>
+            <returns>要创建的下推状态机。</returns>
+        </member>
         <member name="M:QsPlus.Framework.Fsm.FsmManager.DestroyFsm``1(QsPlus.Framework.Fsm.IFsm{``0})">
             <summary>
             销毁状态机。
@@ -766,6 +791,14 @@
             <typeparam name="TFsm">状态机持有者类型。</typeparam>
             <param name="fsm">要销毁的状态机。</param>
             <returns>是否销毁状态机成功。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.FsmManager.DestroyPushDownFsm``1(QsPlus.Framework.Fsm.IPushDownFsm{``0})">
+            <summary>
+            销毁下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <param name="fsm">要销毁的下推状态机。</param>
+            <returns>是否销毁下推状态机成功。</returns>
         </member>
         <member name="M:QsPlus.Framework.Fsm.FsmManager.DestroyFsm(QsPlus.Framework.Fsm.FsmBase)">
             <summary>
@@ -929,7 +962,7 @@
             状态机管理器接口。
             </summary>
         </member>
-        <member name="P:QsPlus.Framework.Fsm.IFsmManager.FsmCount">
+        <member name="P:QsPlus.Framework.Fsm.IFsmManager.FsmAllCount">
             <summary>
             获取状态机数量。
             </summary>
@@ -950,10 +983,17 @@
         </member>
         <member name="M:QsPlus.Framework.Fsm.IFsmManager.GetFsm``1">
             <summary>
-            获取状态机。
+            获取有限状态机。
             </summary>
-            <typeparam name="TFsm">状态机持有者类型。</typeparam>
-            <returns>要获取的状态机。</returns>
+            <typeparam name="TFsm">有限状态机持有者类型。</typeparam>
+            <returns>要获取的有限状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.GetPushDownFsm``1">
+            <summary>
+            获取下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <returns>要获取的下推状态机。</returns>
         </member>
         <member name="M:QsPlus.Framework.Fsm.IFsmManager.GetFsm(System.Type)">
             <summary>
@@ -986,13 +1026,39 @@
             <param name="states">有限状态机状态集合。</param>
             <returns>要创建的有限状态机。</returns>
         </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.CreatePushDownFsm``1(``0,QsPlus.Framework.Fsm.PushDownFsmStateBase{``0}[])">
+            <summary>
+            创建下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <param name="owner">下推状态机持有者。</param>
+            <param name="states">下推状态机状态集合。</param>
+            <returns>要创建的下推状态机。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.CreatePushDownFsm``1(``0,System.Collections.Generic.List{QsPlus.Framework.Fsm.PushDownFsmStateBase{``0}})">
+            <summary>
+            创建下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <param name="owner">下推状态机持有者。</param>
+            <param name="states">下推状态机状态集合。</param>
+            <returns>要创建的下推状态机。</returns>
+        </member>
         <member name="M:QsPlus.Framework.Fsm.IFsmManager.DestroyFsm``1(QsPlus.Framework.Fsm.IFsm{``0})">
             <summary>
-            销毁状态机。
+            销毁有限状态机。
             </summary>
-            <typeparam name="TFsm">状态机持有者类型。</typeparam>
-            <param name="fsm">要销毁的状态机。</param>
-            <returns>是否销毁状态机成功。</returns>
+            <typeparam name="TFsm">有限状态机持有者类型。</typeparam>
+            <param name="fsm">要销毁的有限状态机。</param>
+            <returns>是否销毁有限状态机成功。</returns>
+        </member>
+        <member name="M:QsPlus.Framework.Fsm.IFsmManager.DestroyPushDownFsm``1(QsPlus.Framework.Fsm.IPushDownFsm{``0})">
+            <summary>
+            销毁下推状态机。
+            </summary>
+            <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+            <param name="fsm">要销毁的下推状态机。</param>
+            <returns>是否销毁下推状态机成功。</returns>
         </member>
         <member name="M:QsPlus.Framework.Fsm.IFsmManager.DestroyFsm(QsPlus.Framework.Fsm.FsmBase)">
             <summary>

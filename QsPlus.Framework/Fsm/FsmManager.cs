@@ -79,7 +79,7 @@ namespace QsPlus.Framework.Fsm
         /// <summary>
         /// 获取状态机数量。
         /// </summary>
-        public int FsmCount => _mFsmDic.Count;
+        public int FsmAllCount => _mFsmDic.Count;
 
         /// <summary>
         /// 检查是否存在状态机。
@@ -114,6 +114,16 @@ namespace QsPlus.Framework.Fsm
         public IFsm<TFsm> GetFsm<TFsm>() where TFsm : class
         {
             return (IFsm<TFsm>) InternalGetFsm(typeof(TFsm));
+        }
+
+        /// <summary>
+        /// 获取下推状态机。
+        /// </summary>
+        /// <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+        /// <returns>要获取的下推状态机。</returns>
+        public IPushDownFsm<TPushDownFsm> GetPushDownFsm<TPushDownFsm>() where TPushDownFsm : class
+        {
+            return (IPushDownFsm<TPushDownFsm>) InternalGetFsm(typeof(TPushDownFsm));
         }
 
         /// <summary>
@@ -158,7 +168,7 @@ namespace QsPlus.Framework.Fsm
         {
             if (HasFsm<TFsm>())
             {
-                throw new QsPlusFrameworkException($"已存在此类型状态机 ：{typeof(TFsm).FullName}");
+                throw new QsPlusFrameworkException($"已存在此类型有限状态机 ：{typeof(TFsm).FullName}");
             }
 
             Fsm<TFsm> fsm = Fsm<TFsm>.Create(owner, states);
@@ -177,10 +187,48 @@ namespace QsPlus.Framework.Fsm
         {
             if (HasFsm<TFsm>())
             {
-                throw new QsPlusFrameworkException($"已存在此类型状态机 ：{typeof(TFsm).FullName}");
+                throw new QsPlusFrameworkException($"已存在此类型有限状态机 ：{typeof(TFsm).FullName}");
             }
 
             Fsm<TFsm> fsm = Fsm<TFsm>.Create(owner, states);
+            _mFsmDic.Add(owner.GetType(), fsm);
+            return fsm;
+        }
+
+        /// <summary>
+        /// 创建下推状态机。
+        /// </summary>
+        /// <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+        /// <param name="owner">下推状态机持有者。</param>
+        /// <param name="states">下推状态机状态集合。</param>
+        /// <returns>要创建的下推状态机。</returns>
+        public IPushDownFsm<TPushDownFsm> CreatePushDownFsm<TPushDownFsm>(TPushDownFsm owner, params PushDownFsmStateBase<TPushDownFsm>[] states) where TPushDownFsm : class
+        {
+            if (HasFsm<TPushDownFsm>())
+            {
+                throw new QsPlusFrameworkException($"已存在此类型下推状态机 ：{typeof(TPushDownFsm).FullName}");
+            }
+
+            PushDownFsm<TPushDownFsm> fsm = PushDownFsm<TPushDownFsm>.Create(owner, states);
+            _mFsmDic.Add(owner.GetType(), fsm);
+            return fsm;
+        }
+
+        /// <summary>
+        /// 创建下推状态机。
+        /// </summary>
+        /// <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+        /// <param name="owner">下推状态机持有者。</param>
+        /// <param name="states">下推状态机状态集合。</param>
+        /// <returns>要创建的下推状态机。</returns>
+        public IPushDownFsm<TPushDownFsm> CreatePushDownFsm<TPushDownFsm>(TPushDownFsm owner, List<PushDownFsmStateBase<TPushDownFsm>> states) where TPushDownFsm : class
+        {
+            if (HasFsm<TPushDownFsm>())
+            {
+                throw new QsPlusFrameworkException($"已存在此类型下推状态机 ：{typeof(TPushDownFsm).FullName}");
+            }
+
+            PushDownFsm<TPushDownFsm> fsm = PushDownFsm<TPushDownFsm>.Create(owner, states);
             _mFsmDic.Add(owner.GetType(), fsm);
             return fsm;
         }
@@ -195,10 +243,26 @@ namespace QsPlus.Framework.Fsm
         {
             if (fsm == null)
             {
-                throw new QsPlusFrameworkException("状态机是无效的。");
+                throw new QsPlusFrameworkException("有限状态机是无效的。");
             }
 
             return InternalDestroyFsm(typeof(TFsm));
+        }
+
+        /// <summary>
+        /// 销毁下推状态机。
+        /// </summary>
+        /// <typeparam name="TPushDownFsm">下推状态机持有者类型。</typeparam>
+        /// <param name="fsm">要销毁的下推状态机。</param>
+        /// <returns>是否销毁下推状态机成功。</returns>
+        public bool DestroyPushDownFsm<TPushDownFsm>(IPushDownFsm<TPushDownFsm> fsm) where TPushDownFsm : class
+        {
+            if (fsm == null)
+            {
+                throw new QsPlusFrameworkException("下推状态机是无效的。");
+            }
+
+            return InternalDestroyFsm(typeof(TPushDownFsm));
         }
 
         /// <summary>
