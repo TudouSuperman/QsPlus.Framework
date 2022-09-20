@@ -22,6 +22,16 @@ namespace QsPlus.Framework.Reference
         private static readonly IDictionary<Type, InternalReferenceCache> InternalReferences = new Dictionary<Type, InternalReferenceCache>();
 
         /// <summary>
+        /// 获取指定类型引用的数量。
+        /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>指定类型引用的数量。</returns>
+        public static bool CheckReference<TReference>() where TReference : IReference
+        {
+            return CheckReference(typeof(TReference));
+        }
+
+        /// <summary>
         /// 检查是否存在指定类型引用。
         /// </summary>
         /// <param name="referenceType">引用类型。</param>
@@ -31,6 +41,16 @@ namespace QsPlus.Framework.Reference
             return InternalGetReferenceCache(referenceType).CheckReference();
         }
 
+        /// <summary>
+        /// 获取指定类型引用。
+        /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>要获取的引用。</returns>
+        public static TReference AcquireReference<TReference>() where TReference : IReference
+        {
+            return (TReference)AcquireReference(typeof(TReference));
+        }
+        
         /// <summary>
         /// 获取指定类型引用。
         /// </summary>
@@ -59,7 +79,7 @@ namespace QsPlus.Framework.Reference
             {
                 itemInternalReferenceCache.Value.ClearInternalReferenceCache();
             }
-            
+
             InternalReferences.Clear();
         }
 

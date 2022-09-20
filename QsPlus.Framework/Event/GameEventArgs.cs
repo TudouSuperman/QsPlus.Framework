@@ -6,18 +6,17 @@
 // QQ : 2581424471@qq.com
 //------------------------------------------------------------
 
-using System;
-using QsPlus.Framework.Reference;
+using QsPlus.Framework.Common;
 
-namespace QsPlus.Framework.Common
+namespace QsPlus.Framework.Event
 {
     /// <summary>
-    /// 框架消息参数基类。
+    /// 游戏事件参数基类。
     /// </summary>
-    public abstract class QsPlusFrameworkMessageArgs : EventArgs, IReference
+    public abstract class GameEventArgs : QsPlusFrameworkEventArgs
     {
         /// <summary>
-        /// 框架事件编号。
+        /// 事件参数编号。
         /// </summary>
         public abstract int EventArgsId { get; }
 
@@ -25,10 +24,5 @@ namespace QsPlus.Framework.Common
         /// 用户自定义数据。
         /// </summary>
         public abstract object UserData { get; set; }
-
-        /// <summary>
-        /// 清理引用(释放时调用)。
-        /// </summary>
-        public abstract void ClearReference();
     }
 }

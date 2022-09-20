@@ -6,7 +6,6 @@
 // QQ : 2581424471@qq.com
 //------------------------------------------------------------
 
-using QsPlus.Framework.Common;
 using QsPlus.Framework.Reference;
 
 namespace QsPlus.Framework.Event
@@ -24,7 +23,7 @@ namespace QsPlus.Framework.Event
         /// <summary>
         /// 框架事件参数。
         /// </summary>
-        public QsPlusFrameworkEventArgs EventArgs { get; private set; }
+        public GameEventArgs EventArgs { get; private set; }
 
         /// <summary>
         /// 奇怪的参数。
@@ -48,9 +47,9 @@ namespace QsPlus.Framework.Event
         /// <param name="eventArgs">框架事件参数。</param>
         /// <param name="args">奇怪的参数。</param>
         /// <returns>创建的框架事件类。</returns>
-        public static Event Create(object sender, QsPlusFrameworkEventArgs eventArgs, object args)
+        public static Event Create(object sender, GameEventArgs eventArgs, object args)
         {
-            Event e = (Event) InternalReferencePool.AcquireReference(typeof(Event));
+            Event e = InternalReferencePool.AcquireReference<Event>();
             e.Sender = sender;
             e.EventArgs = eventArgs;
             e.Args = args;

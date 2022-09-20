@@ -42,7 +42,7 @@ namespace QsPlus.Framework.Message
         /// <returns>创建的框架消息类。</returns>
         public static Message Create(int messageId, object messageInfo)
         {
-            Message msg = (Message) InternalReferencePool.AcquireReference(typeof(Message));
+            Message msg = InternalReferencePool.AcquireReference<Message>();
             msg.MessageId = messageId;
             msg.UserMessageInfo = messageInfo;
             return msg;

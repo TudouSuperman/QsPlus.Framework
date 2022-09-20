@@ -18,6 +18,13 @@ namespace QsPlus.Framework.Reference
         /// <summary>
         /// 获取指定类型引用的数量。
         /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>指定类型引用的数量。</returns>
+        int ReferenceCount<TReference>() where TReference : IReference;
+
+        /// <summary>
+        /// 获取指定类型引用的数量。
+        /// </summary>
         /// <param name="referenceType">引用类型。</param>
         /// <returns>指定类型引用的数量。</returns>
         int ReferenceCount(Type referenceType);
@@ -25,9 +32,23 @@ namespace QsPlus.Framework.Reference
         /// <summary>
         /// 检查是否存在指定类型引用。
         /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>是否存在指定类型引用。</returns>
+        bool CheckReference<TReference>() where TReference : IReference;
+
+        /// <summary>
+        /// 检查是否存在指定类型引用。
+        /// </summary>
         /// <param name="referenceType">引用类型。</param>
         /// <returns>是否存在指定类型引用。</returns>
         bool CheckReference(Type referenceType);
+
+        /// <summary>
+        /// 获取指定类型引用。
+        /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>要获取的引用。</returns>
+        TReference AcquireReference<TReference>() where TReference : IReference;
 
         /// <summary>
         /// 获取指定类型引用。
@@ -45,9 +66,23 @@ namespace QsPlus.Framework.Reference
         /// <summary>
         /// 创建并缓存多个指定类型的引用。
         /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <param name="count">数量。</param>
+        void AddReference<TReference>(int count) where TReference : IReference;
+
+        /// <summary>
+        /// 创建并缓存多个指定类型的引用。
+        /// </summary>
         /// <param name="referenceType">引用类型。</param>
         /// <param name="count">数量。</param>
         void AddReference(Type referenceType, int count);
+
+        /// <summary>
+        /// 移除多个指定类型的引用。
+        /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <param name="count">数量。</param>
+        void RemoveReference<TReference>(int count) where TReference : IReference;
 
         /// <summary>
         /// 移除多个指定类型的引用。

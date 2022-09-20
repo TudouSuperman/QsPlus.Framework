@@ -17,14 +17,11 @@ namespace QsPlus.Framework.Common
     public abstract class QsPlusFrameworkEventArgs : EventArgs, IReference
     {
         /// <summary>
-        /// 框架事件编号。
+        /// 初始化框架事件参数基类的新实例。
         /// </summary>
-        public abstract int EventArgsId { get; }
-
-        /// <summary>
-        /// 用户自定义数据。
-        /// </summary>
-        public abstract object UserData { get; set; }
+        protected QsPlusFrameworkEventArgs()
+        {
+        }
 
         /// <summary>
         /// 清理引用(释放时调用)。

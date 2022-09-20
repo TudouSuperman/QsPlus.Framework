@@ -64,6 +64,16 @@ namespace QsPlus.Framework.Reference
         /// <summary>
         /// 获取指定类型引用的数量。
         /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>指定类型引用的数量。</returns>
+        public int ReferenceCount<TReference>() where TReference : IReference
+        {
+            return ReferenceCount(typeof(TReference));
+        }
+
+        /// <summary>
+        /// 获取指定类型引用的数量。
+        /// </summary>
         /// <param name="referenceType">引用类型。</param>
         /// <returns>指定类型引用的数量。</returns>
         public int ReferenceCount(Type referenceType)
@@ -74,11 +84,31 @@ namespace QsPlus.Framework.Reference
         /// <summary>
         /// 检查是否存在指定类型引用。
         /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>是否存在指定类型引用。</returns>
+        public bool CheckReference<TReference>() where TReference : IReference
+        {
+            return CheckReference(typeof(TReference));
+        }
+
+        /// <summary>
+        /// 检查是否存在指定类型引用。
+        /// </summary>
         /// <param name="referenceType">引用类型。</param>
         /// <returns>是否存在指定类型引用。</returns>
         public bool CheckReference(Type referenceType)
         {
             return InternalGetReferenceCache(referenceType).CheckReference();
+        }
+
+        /// <summary>
+        /// 获取指定类型引用。
+        /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <returns>要获取的引用。</returns>
+        public TReference AcquireReference<TReference>() where TReference : IReference
+        {
+            return (TReference) AcquireReference(typeof(TReference));
         }
 
         /// <summary>
@@ -103,11 +133,31 @@ namespace QsPlus.Framework.Reference
         /// <summary>
         /// 创建并缓存多个指定类型的引用。
         /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <param name="count">数量。</param>
+        public void AddReference<TReference>(int count) where TReference : IReference
+        {
+            AddReference(typeof(TReference), count);
+        }
+
+        /// <summary>
+        /// 创建并缓存多个指定类型的引用。
+        /// </summary>
         /// <param name="referenceType">引用类型。</param>
         /// <param name="count">数量。</param>
         public void AddReference(Type referenceType, int count)
         {
             InternalGetReferenceCache(referenceType).AddReference(count);
+        }
+
+        /// <summary>
+        /// 移除多个指定类型的引用。
+        /// </summary>
+        /// <typeparam name="TReference">引用类型。</typeparam>
+        /// <param name="count">数量。</param>
+        public void RemoveReference<TReference>(int count) where TReference : IReference
+        {
+            RemoveReference(typeof(TReference), count);
         }
 
         /// <summary>

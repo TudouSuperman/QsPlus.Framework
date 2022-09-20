@@ -201,10 +201,6 @@ namespace QsPlus.Framework.Message
             {
                 messages?.Invoke(message);
             }
-            else
-            {
-                throw new QsPlusFrameworkException($"[此消息未订阅 -> id : {id} -> message : {(message == null ? "null" : message.ToString())}]");
-            }
         }
     }
 }

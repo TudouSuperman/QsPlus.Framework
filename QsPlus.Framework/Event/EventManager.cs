@@ -21,7 +21,7 @@ namespace QsPlus.Framework.Event
         /// <summary>
         /// 框架事件缓存。
         /// </summary>
-        private readonly IDictionary<int, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object>> _mEvents;
+        private readonly IDictionary<int, QsPlusFrameworkEventHandler<GameEventArgs, object>> _mEvents;
 
         /// <summary>
         /// 框架事件处理队列。
@@ -33,7 +33,7 @@ namespace QsPlus.Framework.Event
         /// </summary>
         public EventManager()
         {
-            _mEvents = new Dictionary<int, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object>>();
+            _mEvents = new Dictionary<int, QsPlusFrameworkEventHandler<GameEventArgs, object>>();
             _mHandleEventQueue = new Queue<Event>();
         }
 
@@ -99,14 +99,14 @@ namespace QsPlus.Framework.Event
         /// <param name="id">要检查的框架事件编号。</param>
         /// <param name="eventHandler">要检查的框架事件处理函数。</param>
         /// <returns>是否存在指定框架事件处理函数。</returns>
-        public bool CheckEvent(int id, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandler)
+        public bool CheckEvent(int id, QsPlusFrameworkEventHandler<GameEventArgs, object> eventHandler)
         {
             if (eventHandler == null)
             {
                 throw new QsPlusFrameworkException("[要检查的框架事件处理函数是无效的 -> null]");
             }
 
-            if (_mEvents.TryGetValue(id, out QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandlers))
+            if (_mEvents.TryGetValue(id, out QsPlusFrameworkEventHandler<GameEventArgs, object> eventHandlers))
             {
                 return eventHandlers.GetInvocationList().Contains(eventHandlers);
             }
@@ -119,7 +119,7 @@ namespace QsPlus.Framework.Event
         /// </summary>
         /// <param name="id">要订阅的框架事件编号。</param>
         /// <param name="eventHandler">要订阅的框架事件处理函数。</param>
-        public void SubscribeEvent(int id, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandler)
+        public void SubscribeEvent(int id, QsPlusFrameworkEventHandler<GameEventArgs, object> eventHandler)
         {
             if (eventHandler == null)
             {
@@ -141,7 +141,7 @@ namespace QsPlus.Framework.Event
         /// </summary>
         /// <param name="id">要取消订阅的框架事件编号。</param>
         /// <param name="eventHandler">要取消订阅的框架事件处理函数。</param>
-        public void UnSubscribeEvent(int id, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandler)
+        public void UnSubscribeEvent(int id, QsPlusFrameworkEventHandler<GameEventArgs, object> eventHandler)
         {
             if (eventHandler == null)
             {
@@ -164,7 +164,7 @@ namespace QsPlus.Framework.Event
         /// <param name="sender">事件发送者。</param>
         /// <param name="eventArgs">框架事件参数。</param>
         /// <param name="args">奇怪的参数。</param>
-        public void BroadcastEvent(object sender, QsPlusFrameworkEventArgs eventArgs, object args)
+        public void BroadcastEvent(object sender, GameEventArgs eventArgs, object args)
         {
             if (eventArgs == null)
             {
@@ -184,7 +184,7 @@ namespace QsPlus.Framework.Event
         /// <param name="sender">事件发送者。</param>
         /// <param name="eventArgs">框架事件参数。</param>
         /// <param name="args">奇怪的参数。</param>
-        public void BroadcastEventNow(object sender, QsPlusFrameworkEventArgs eventArgs, object args)
+        public void BroadcastEventNow(object sender, GameEventArgs eventArgs, object args)
         {
             if (eventArgs == null)
             {
@@ -200,15 +200,11 @@ namespace QsPlus.Framework.Event
         /// <param name="sender">事件发送者。</param>
         /// <param name="eventArgs">框架事件参数。</param>
         /// <param name="args">奇怪的参数。</param>
-        private void InternalHandleEvent(object sender, QsPlusFrameworkEventArgs eventArgs, object args)
+        private void InternalHandleEvent(object sender, GameEventArgs eventArgs, object args)
         {
-            if (_mEvents.TryGetValue(eventArgs.EventArgsId, out QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> e))
+            if (_mEvents.TryGetValue(eventArgs.EventArgsId, out QsPlusFrameworkEventHandler<GameEventArgs, object> e))
             {
                 e?.Invoke(sender, eventArgs, args);
-            }
-            else
-            {
-                throw new QsPlusFrameworkException($"[此事件未订阅 -> sender : {(sender == null ? "null" : sender.ToString())} -> eventArgs : {eventArgs} -> args : {(args == null ? "null" : args.ToString())}]");
             }
         }
     }

@@ -28,21 +28,21 @@ namespace QsPlus.Framework.Event
         /// <param name="id">要检查的框架事件编号。</param>
         /// <param name="eventHandler">要检查的框架事件处理函数。</param>
         /// <returns>是否存在指定框架事件处理函数。</returns>
-        bool CheckEvent(int id, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandler);
+        bool CheckEvent(int id, QsPlusFrameworkEventHandler<GameEventArgs, object> eventHandler);
 
         /// <summary>
         /// 订阅框架事件。
         /// </summary>
         /// <param name="id">要订阅的框架事件编号。</param>
         /// <param name="eventHandler">要订阅的框架事件处理函数。</param>
-        void SubscribeEvent(int id, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandler);
+        void SubscribeEvent(int id, QsPlusFrameworkEventHandler<GameEventArgs, object> eventHandler);
 
         /// <summary>
         /// 取消订阅框架事件。
         /// </summary>
         /// <param name="id">要取消订阅的框架事件编号。</param>
         /// <param name="eventHandler">要取消订阅的框架事件处理函数。</param>
-        void UnSubscribeEvent(int id, QsPlusFrameworkEventHandler<QsPlusFrameworkEventArgs, object> eventHandler);
+        void UnSubscribeEvent(int id, QsPlusFrameworkEventHandler<GameEventArgs, object> eventHandler);
 
         /// <summary>
         /// 广播框架事件 - 线程安全模式。
@@ -50,7 +50,7 @@ namespace QsPlus.Framework.Event
         /// <param name="sender">事件发送者。</param>
         /// <param name="eventArgs">框架事件参数。</param>
         /// <param name="args">奇怪的参数。</param>
-        void BroadcastEvent(object sender, QsPlusFrameworkEventArgs eventArgs, object args);
+        void BroadcastEvent(object sender, GameEventArgs eventArgs, object args);
 
         /// <summary>
         /// 广播框架事件 - 立即广播模式。
@@ -58,6 +58,6 @@ namespace QsPlus.Framework.Event
         /// <param name="sender">事件发送者。</param>
         /// <param name="eventArgs">框架事件参数。</param>
         /// <param name="args">奇怪的参数。</param>
-        void BroadcastEventNow(object sender, QsPlusFrameworkEventArgs eventArgs, object args);
+        void BroadcastEventNow(object sender, GameEventArgs eventArgs, object args);
     }
 }
