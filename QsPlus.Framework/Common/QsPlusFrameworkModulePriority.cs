@@ -36,5 +36,10 @@ namespace QsPlus.Framework.Common
         /// 界面管理器。
         /// </summary>
         UiManager,
+        
+        /// <summary>
+        /// 配置管理器。
+        /// </summary>
+        ConfigManager,
     }
 }
