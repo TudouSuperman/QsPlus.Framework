@@ -61,7 +61,7 @@ namespace QsPlus.Framework.Fsm
         protected internal abstract void OnClear(IPushDownFsm<TPushDownFsmOwner> fsm);
 
         /// <summary>
-        /// 下推当前临时位的下推状态机。
+        /// 下推当前临时位的下推状态机到栈区。
         /// </summary>
         /// <typeparam name="TFsmState">要压入的下推状态机状态类型。</typeparam>
         /// <param name="fsm">下推状态机引用。</param>
@@ -77,7 +77,7 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 下推当前临时位的下推状态机。
+        /// 下推当前临时位的下推状态机到栈区。
         /// </summary>
         /// <param name="fsm">下推状态机引用。</param>
         /// <param name="stateType">要压入的下推状态机状态类型。</param>

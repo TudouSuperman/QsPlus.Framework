@@ -333,7 +333,7 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 下推当前临时位的下推状态机。
+        /// 下推当前临时位的下推状态机到栈区。
         /// </summary>
         /// <typeparam name="TPushDownFsmOwnerState">要压入的下推状态机状态类型。</typeparam>
         internal void PushDownState<TPushDownFsmOwnerState>() where TPushDownFsmOwnerState : PushDownFsmStateBase<TPushDownFsmOwner>
@@ -342,7 +342,7 @@ namespace QsPlus.Framework.Fsm
         }
 
         /// <summary>
-        /// 下推当前临时位的下推状态机。
+        /// 下推当前临时位的下推状态机到栈区。
         /// </summary>
         /// <param name="stateType">要压入的下推状态机状态类型。</param>
         internal void PushDownState(Type stateType)
@@ -357,11 +357,14 @@ namespace QsPlus.Framework.Fsm
             {
                 throw new QsPlusFrameworkException($"状态机 '{typeof(TPushDownFsmOwner).FullName}' 进入状态 '{stateType.FullName}' 不存在。");
             }
-
-            _mCurrentState.OnPause(this);
-            _mPushDownFsmStack.Push(_mCurrentState);
-            _mCurrentState = state;
-            _mCurrentState.OnEnter(this);
+            
+            if (!_mPushDownFsmStack.Contains(_mCurrentState))
+            {
+                _mCurrentState.OnPause(this);
+                _mPushDownFsmStack.Push(_mCurrentState);
+                _mCurrentState = state;
+                _mCurrentState.OnEnter(this);
+            }
         }
 
         /// <summary>
@@ -369,6 +372,11 @@ namespace QsPlus.Framework.Fsm
         /// </summary>
         internal void PopUpState()
         {
+            if (_mPushDownFsmStack == null || _mPushDownFsmStack.Count <= 0)
+            {
+                return;
+            }
+
             PushDownFsmStateBase<TPushDownFsmOwner> state = _mPushDownFsmStack.Pop();
             while (state == null && _mPushDownFsmStack.Count > 0)
             {
