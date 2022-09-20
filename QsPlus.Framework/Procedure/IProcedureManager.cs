@@ -7,6 +7,9 @@
 
 namespace QsPlus.Framework.Procedure
 {
+    /// <summary>
+    /// 流程管理器接口。
+    /// </summary>
     public interface IProcedureManager
     {
         
