@@ -5,7 +5,6 @@
 // E-mail : www.shiqi.com@gmail.com
 //------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using QsPlus.Framework.Common;
 
@@ -16,7 +15,7 @@ namespace QsPlus.Framework.Fsm
     /// </summary>
     internal sealed class FsmManager : IQsPlusFrameworkModule, IFsmManager
     {
-        private readonly IDictionary<Type, FsmBase> _mFsmDic;
+        private readonly IDictionary<int, FsmBase> _mFsmDic;
         private readonly List<FsmBase> _mTempFsmList;
 
         /// <summary>
@@ -24,7 +23,7 @@ namespace QsPlus.Framework.Fsm
         /// </summary>
         public FsmManager()
         {
-            _mFsmDic = new Dictionary<Type, FsmBase>();
+            _mFsmDic = new Dictionary<int, FsmBase>();
             _mTempFsmList = new List<FsmBase>();
         }
 
@@ -46,7 +45,7 @@ namespace QsPlus.Framework.Fsm
                 return;
             }
 
-            foreach (KeyValuePair<Type, FsmBase> fsm in _mFsmDic)
+            foreach (KeyValuePair<int, FsmBase> fsm in _mFsmDic)
             {
                 _mTempFsmList.Add(fsm.Value);
             }
@@ -67,7 +66,7 @@ namespace QsPlus.Framework.Fsm
         /// </summary>
         public void QsPlusFrameworkModuleShutdown()
         {
-            foreach (KeyValuePair<Type, FsmBase> fsm in _mFsmDic)
+            foreach (KeyValuePair<int, FsmBase> fsm in _mFsmDic)
             {
                 fsm.Value.FsmShutdown();
             }
@@ -88,22 +87,17 @@ namespace QsPlus.Framework.Fsm
         /// <returns>是否存在状态机。</returns>
         public bool HasFsm<TFsm>() where TFsm : class
         {
-            return InternalHasFsm(typeof(TFsm));
+            return InternalHasFsm(typeof(TFsm).GetHashCode());
         }
 
         /// <summary>
         /// 检查是否存在状态机。
         /// </summary>
-        /// <param name="ownerType">状态机持有者类型。</param>
+        /// <param name="id">状态机编号。</param>
         /// <returns>是否存在状态机。</returns>
-        public bool HasFsm(Type ownerType)
+        public bool HasFsm(int id)
         {
-            if (ownerType == null)
-            {
-                throw new QsPlusFrameworkException("状态机持有者类型是无效的。");
-            }
-
-            return InternalHasFsm(ownerType);
+            return InternalHasFsm(id);
         }
 
         /// <summary>
@@ -113,7 +107,7 @@ namespace QsPlus.Framework.Fsm
         /// <returns>要获取的状态机。</returns>
         public IFsm<TFsm> GetFsm<TFsm>() where TFsm : class
         {
-            return (IFsm<TFsm>) InternalGetFsm(typeof(TFsm));
+            return (IFsm<TFsm>) InternalGetFsm(typeof(TFsm).GetHashCode());
         }
 
         /// <summary>
@@ -123,22 +117,17 @@ namespace QsPlus.Framework.Fsm
         /// <returns>要获取的下推状态机。</returns>
         public IPushDownFsm<TPushDownFsm> GetPushDownFsm<TPushDownFsm>() where TPushDownFsm : class
         {
-            return (IPushDownFsm<TPushDownFsm>) InternalGetFsm(typeof(TPushDownFsm));
+            return (IPushDownFsm<TPushDownFsm>) InternalGetFsm(typeof(TPushDownFsm).GetHashCode());
         }
 
         /// <summary>
         /// 获取状态机。
         /// </summary>
-        /// <param name="ownerType">状态机持有者类型。</param>
+        /// <param name="id">状态机编号。</param>
         /// <returns>要获取的状态机。</returns>
-        public FsmBase GetFsm(Type ownerType)
+        public FsmBase GetFsm(int id)
         {
-            if (ownerType == null)
-            {
-                throw new QsPlusFrameworkException("状态机持有者类型是无效的。");
-            }
-
-            return InternalGetFsm(ownerType);
+            return InternalGetFsm(id);
         }
 
         /// <summary>
@@ -149,7 +138,7 @@ namespace QsPlus.Framework.Fsm
         {
             int index = 0;
             FsmBase[] results = new FsmBase[_mFsmDic.Count];
-            foreach (KeyValuePair<Type, FsmBase> fsm in _mFsmDic)
+            foreach (KeyValuePair<int, FsmBase> fsm in _mFsmDic)
             {
                 results[index++] = fsm.Value;
             }
@@ -172,7 +161,7 @@ namespace QsPlus.Framework.Fsm
             }
 
             Fsm<TFsm> fsm = Fsm<TFsm>.Create(owner, states);
-            _mFsmDic.Add(owner.GetType(), fsm);
+            _mFsmDic.Add(typeof(TFsm).GetHashCode(), fsm);
             return fsm;
         }
 
@@ -191,7 +180,7 @@ namespace QsPlus.Framework.Fsm
             }
 
             Fsm<TFsm> fsm = Fsm<TFsm>.Create(owner, states);
-            _mFsmDic.Add(owner.GetType(), fsm);
+            _mFsmDic.Add(typeof(TFsm).GetHashCode(), fsm);
             return fsm;
         }
 
@@ -210,7 +199,7 @@ namespace QsPlus.Framework.Fsm
             }
 
             PushDownFsm<TPushDownFsm> fsm = PushDownFsm<TPushDownFsm>.Create(owner, states);
-            _mFsmDic.Add(owner.GetType(), fsm);
+            _mFsmDic.Add(typeof(TPushDownFsm).GetHashCode(), fsm);
             return fsm;
         }
 
@@ -229,16 +218,16 @@ namespace QsPlus.Framework.Fsm
             }
 
             PushDownFsm<TPushDownFsm> fsm = PushDownFsm<TPushDownFsm>.Create(owner, states);
-            _mFsmDic.Add(owner.GetType(), fsm);
+            _mFsmDic.Add(typeof(TPushDownFsm).GetHashCode(), fsm);
             return fsm;
         }
 
         /// <summary>
-        /// 销毁状态机。
+        /// 销毁有限状态机。
         /// </summary>
-        /// <typeparam name="TFsm">状态机持有者类型。</typeparam>
-        /// <param name="fsm">要销毁的状态机。</param>
-        /// <returns>是否销毁状态机成功。</returns>
+        /// <typeparam name="TFsm">有限状态机持有者类型。</typeparam>
+        /// <param name="fsm">要销毁的有限状态机。</param>
+        /// <returns>是否销毁有限状态机成功。</returns>
         public bool DestroyFsm<TFsm>(IFsm<TFsm> fsm) where TFsm : class
         {
             if (fsm == null)
@@ -246,7 +235,7 @@ namespace QsPlus.Framework.Fsm
                 throw new QsPlusFrameworkException("有限状态机是无效的。");
             }
 
-            return InternalDestroyFsm(typeof(TFsm));
+            return InternalDestroyFsm(fsm.GetHashCode());
         }
 
         /// <summary>
@@ -262,42 +251,37 @@ namespace QsPlus.Framework.Fsm
                 throw new QsPlusFrameworkException("下推状态机是无效的。");
             }
 
-            return InternalDestroyFsm(typeof(TPushDownFsm));
+            return InternalDestroyFsm(fsm.GetHashCode());
         }
 
         /// <summary>
         /// 销毁状态机。
         /// </summary>
-        /// <param name="fsm">要销毁的状态机。</param>
+        /// <param name="id">要销毁的状态机编号。</param>
         /// <returns>是否销毁状态机成功。</returns>
-        public bool DestroyFsm(FsmBase fsm)
+        public bool DestroyFsm(int id)
         {
-            if (fsm == null)
-            {
-                throw new QsPlusFrameworkException("状态机是无效的。");
-            }
-
-            return InternalDestroyFsm(fsm.OwnerType);
+            return InternalDestroyFsm(id);
         }
 
         /// <summary>
         /// 内部检查是否存在状态机。
         /// </summary>
-        /// <param name="fsm">状态机类型。</param>
+        /// <param name="id">状态机编号。</param>
         /// <returns></returns>
-        private bool InternalHasFsm(Type fsm)
+        private bool InternalHasFsm(int id)
         {
-            return _mFsmDic.ContainsKey(fsm);
+            return _mFsmDic.ContainsKey(id);
         }
 
         /// <summary>
         /// 内部获取状态机。
         /// </summary>
-        /// <param name="fsm">状态机类型。</param>
+        /// <param name="id">状态机编号。</param>
         /// <returns></returns>
-        private FsmBase InternalGetFsm(Type fsm)
+        private FsmBase InternalGetFsm(int id)
         {
-            if (_mFsmDic.TryGetValue(fsm, out FsmBase tempFsm))
+            if (_mFsmDic.TryGetValue(id, out FsmBase tempFsm))
             {
                 return tempFsm;
             }
@@ -308,14 +292,14 @@ namespace QsPlus.Framework.Fsm
         /// <summary>
         /// 内部销毁状态机。
         /// </summary>
-        /// <param name="fsm">状态机类型。</param>
+        /// <param name="id">状态机编号。</param>
         /// <returns></returns>
-        private bool InternalDestroyFsm(Type fsm)
+        private bool InternalDestroyFsm(int id)
         {
-            if (_mFsmDic.TryGetValue(fsm, out FsmBase tempFsm))
+            if (_mFsmDic.TryGetValue(id, out FsmBase tempFsm))
             {
                 tempFsm.FsmShutdown();
-                return _mFsmDic.Remove(fsm);
+                return _mFsmDic.Remove(id);
             }
 
             return false;

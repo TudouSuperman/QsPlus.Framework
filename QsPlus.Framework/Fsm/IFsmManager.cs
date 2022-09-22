@@ -30,9 +30,9 @@ namespace QsPlus.Framework.Fsm
         /// <summary>
         /// 检查是否存在状态机。
         /// </summary>
-        /// <param name="ownerType">状态机持有者类型。</param>
+        /// <param name="id">状态机编号。</param>
         /// <returns>是否存在状态机。</returns>
-        bool HasFsm(Type ownerType);
+        bool HasFsm(int id);
 
         /// <summary>
         /// 获取有限状态机。
@@ -51,9 +51,9 @@ namespace QsPlus.Framework.Fsm
         /// <summary>
         /// 获取状态机。
         /// </summary>
-        /// <param name="ownerType">状态机持有者类型。</param>
+        /// <param name="id">状态机编号。</param>
         /// <returns>要获取的状态机。</returns>
-        FsmBase GetFsm(Type ownerType);
+        FsmBase GetFsm(int id);
 
         /// <summary>
         /// 获取所有状态机。
@@ -116,8 +116,8 @@ namespace QsPlus.Framework.Fsm
         /// <summary>
         /// 销毁状态机。
         /// </summary>
-        /// <param name="fsm">要销毁的状态机。</param>
+        /// <param name="id">要销毁的状态机编号。</param>
         /// <returns>是否销毁状态机成功。</returns>
-        bool DestroyFsm(FsmBase fsm);
+        bool DestroyFsm(int id);
     }
 }

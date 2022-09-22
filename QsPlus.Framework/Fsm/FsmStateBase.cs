@@ -32,9 +32,9 @@ namespace QsPlus.Framework.Fsm
         /// 有限状态机状态轮询时调用。
         /// </summary>
         /// <param name="fsm">有限状态机引用。</param>
-        /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
-        /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
-        protected internal abstract void OnUpdate(IFsm<TFsmOwner> fsm, float elapseSeconds, float realElapseSeconds);
+        /// <param name="logicTime">逻辑时间。</param>
+        /// <param name="actualTime">真实时间。</param>
+        protected internal abstract void OnUpdate(IFsm<TFsmOwner> fsm, float logicTime, float actualTime);
 
         /// <summary>
         /// 有限状态机状态离开时调用。

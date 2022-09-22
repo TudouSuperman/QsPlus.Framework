@@ -41,5 +41,10 @@ namespace QsPlus.Framework.Common
         /// 配置管理器。
         /// </summary>
         ConfigManager,
+        
+        /// <summary>
+        /// 流程管理器。
+        /// </summary>
+        Procedure,
     }
 }
