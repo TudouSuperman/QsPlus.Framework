@@ -27,32 +27,32 @@ namespace QsPlus.Framework.StateMachine
         /// <summary>
         /// 获取下推状态机持有者。
         /// </summary>
-        public TPushDownStateMachineOwner PushDownStateMachineOwner => _pushDownStateMachineOwner;
+        public TPushDownStateMachineOwner GetPushDownStateMachineOwner => _pushDownStateMachineOwner;
 
         /// <summary>
         /// 获取下推状态机当前临时位状态。
         /// </summary>
-        public IPushDownStateMachineState<TPushDownStateMachineOwner> PushDownStateMachineCurrentState => _pushDownStateMachineCurrentState;
+        public IPushDownStateMachineState<TPushDownStateMachineOwner> GetPushDownStateMachineCurrentState => _pushDownStateMachineCurrentState;
 
         /// <summary>
         /// 获取状态机持有者类型。
         /// </summary>
-        public Type StateMachineOwnerType => typeof(TPushDownStateMachineOwner);
+        public Type GetMachineOwnerType => typeof(TPushDownStateMachineOwner);
 
         /// <summary>
         /// 获取当前临时位状态名称。
         /// </summary>
-        public string CurrentStateName => PushDownStateMachineCurrentState.GetType().FullName;
+        public string GetCurrentStateName => _pushDownStateMachineCurrentState.GetType().FullName;
 
         /// <summary>
         /// 获取状态机中状态的数量。
         /// </summary>
-        public int StateMachineStateCount => _pushDownStateMachineStates.Count;
+        public int GetMachineStateCount => _pushDownStateMachineStates.Count;
 
         /// <summary>
         /// 获取状态机中栈区状态的数量。
         /// </summary>
-        public int StateMachineStackStateCount => _pushDownStateMachineStack.Count;
+        public int GetMachineStackStateCount => _pushDownStateMachineStack.Count;
         
         /// <summary>
         /// 获取状态机是否正在运行。

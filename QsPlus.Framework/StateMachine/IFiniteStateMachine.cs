@@ -18,27 +18,27 @@ namespace QsPlus.Framework.StateMachine
         /// <summary>
         /// 获取有限状态机持有者。
         /// </summary>
-        TFiniteStateMachineOwner FiniteStateMachineOwner { get; }
+        TFiniteStateMachineOwner GetFiniteStateMachineOwner { get; }
         
         /// <summary>
         /// 获取有限状态机当前状态。
         /// </summary>
-        IFiniteStateMachineState<TFiniteStateMachineOwner> FiniteStateMachineCurrentState { get; }
+        IFiniteStateMachineState<TFiniteStateMachineOwner> GetFiniteStateMachineCurrentState { get; }
 
         /// <summary>
         /// 获取状态机持有者类型。
         /// </summary>
-        Type StateMachineOwnerType { get; }
+        Type GetStateMachineOwnerType { get; }
         
         /// <summary>
         /// 获取当前状态名称。
         /// </summary>
-        string CurrentStateName { get; }
+        string GetCurrentStateName { get; }
         
         /// <summary>
         /// 获取状态机中状态的数量。
         /// </summary>
-        int StateMachineStateCount { get; }
+        int GetStateMachineStateCount { get; }
 
         /// <summary>
         /// 获取状态机是否正在运行。

@@ -18,32 +18,32 @@ namespace QsPlus.Framework.StateMachine
         /// <summary>
         /// 获取下推状态机持有者。
         /// </summary>
-        TPushDownStateMachineOwner PushDownStateMachineOwner { get; }
-        
+        TPushDownStateMachineOwner GetPushDownStateMachineOwner { get; }
+
         /// <summary>
         /// 获取下推状态机当前临时位状态。
         /// </summary>
-        IPushDownStateMachineState<TPushDownStateMachineOwner> PushDownStateMachineCurrentState { get; }
+        IPushDownStateMachineState<TPushDownStateMachineOwner> GetPushDownStateMachineCurrentState { get; }
 
         /// <summary>
         /// 获取状态机持有者类型。
         /// </summary>
-        Type StateMachineOwnerType { get; }
-        
+        Type GetMachineOwnerType { get; }
+
         /// <summary>
         /// 获取当前临时位状态名称。
         /// </summary>
-        string CurrentStateName { get; }
+        string GetCurrentStateName { get; }
 
         /// <summary>
         /// 获取状态机中状态的数量。
         /// </summary>
-        int StateMachineStateCount { get; }
-        
+        int GetMachineStateCount { get; }
+
         /// <summary>
         /// 获取状态机中栈区状态的数量。
         /// </summary>
-        int StateMachineStackStateCount { get; }
+        int GetMachineStackStateCount { get; }
 
         /// <summary>
         /// 获取状态机是否正在运行。
