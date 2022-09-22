@@ -31,7 +31,7 @@ namespace QsPlus.Framework.Procedure
         /// <summary>
         /// 框架模块优先级。
         /// </summary>
-        public QsPlusFrameworkModulePriority QsPlusFrameworkModulePriority => QsPlusFrameworkModulePriority.Procedure;
+        public QsPlusFrameworkModulePriority QsPlusFrameworkModulePriority => QsPlusFrameworkModulePriority.ProcedureManager;
 
         /// <summary>
         /// 框架模块轮询。

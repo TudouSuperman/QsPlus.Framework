@@ -36,15 +36,20 @@ namespace QsPlus.Framework.Common
         /// 界面管理器。
         /// </summary>
         UiManager,
-        
+
         /// <summary>
         /// 配置管理器。
         /// </summary>
         ConfigManager,
-        
+
         /// <summary>
         /// 流程管理器。
         /// </summary>
-        Procedure,
+        ProcedureManager,
+
+        /// <summary>
+        /// 状态机管理器。
+        /// </summary>
+        StateMachineManager
     }
 }
