@@ -34,5 +34,14 @@ namespace QsPlus.Framework.Procedure
         /// </summary>
         /// <param name="procedure">流程持有者。</param>
         public abstract void OnLeaveState(ProcedureOwner procedure);
+
+        /// <summary>
+        /// 切换流程状态。
+        /// </summary>
+        /// <typeparam name="TProcedureState">要切换的流程持有者状态类型。</typeparam>
+        protected internal void ChangeProcedureState<TProcedureState>(ProcedureOwner procedure) where TProcedureState : class, IFiniteStateMachineState<IProcedureManager>
+        {
+            procedure.ChangeFiniteStateMachineState<TProcedureState>();
+        }
     }
 }
