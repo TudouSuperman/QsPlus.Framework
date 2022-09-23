@@ -37,23 +37,23 @@ namespace QsPlus.Framework.StateMachine
         /// <summary>
         /// 获取状态机持有者类型。
         /// </summary>
-        public Type GetMachineOwnerType => typeof(TPushDownStateMachineOwner);
+        public Type GetStateMachineOwnerType => typeof(TPushDownStateMachineOwner);
 
         /// <summary>
-        /// 获取当前临时位状态名称。
+        /// 获取当前临时位状态机状态名称。
         /// </summary>
-        public string GetCurrentStateName => _pushDownStateMachineCurrentState.GetType().FullName;
+        public string GetCurrentStateMachineStateName => _pushDownStateMachineCurrentState.GetType().FullName;
 
         /// <summary>
         /// 获取状态机中状态的数量。
         /// </summary>
-        public int GetMachineStateCount => _pushDownStateMachineStates.Count;
+        public int GetStateMachineStateCount => _pushDownStateMachineStates.Count;
 
         /// <summary>
         /// 获取状态机中栈区状态的数量。
         /// </summary>
-        public int GetMachineStackStateCount => _pushDownStateMachineStack.Count;
-        
+        public int GetStateMachineStackStateCount => _pushDownStateMachineStack.Count;
+
         /// <summary>
         /// 获取状态机是否正在运行。
         /// </summary>
@@ -230,13 +230,25 @@ namespace QsPlus.Framework.StateMachine
                 throw new QsPlusFrameworkException("不存在的要下推的下推状态机状态是无效的。");
             }
 
-            if (!_pushDownStateMachineStack.Contains(_pushDownStateMachineCurrentState))
+            if (_pushDownStateMachineCurrentState.Equals(tempPushDownStateMachineState))
             {
-                _pushDownStateMachineCurrentState.OnPauseState(this);
-                _pushDownStateMachineStack.Push(_pushDownStateMachineCurrentState);
-                _pushDownStateMachineCurrentState = tempPushDownStateMachineState;
-                _pushDownStateMachineCurrentState.OnEnterState(this);
+                return;
             }
+
+            if (_pushDownStateMachineStack.Contains(_pushDownStateMachineCurrentState))
+            {
+                return;
+            }
+
+            if (_pushDownStateMachineStack.Contains(tempPushDownStateMachineState))
+            {
+                return;
+            }
+
+            _pushDownStateMachineCurrentState.OnPauseState(this);
+            _pushDownStateMachineStack.Push(_pushDownStateMachineCurrentState);
+            _pushDownStateMachineCurrentState = tempPushDownStateMachineState;
+            _pushDownStateMachineCurrentState.OnEnterState(this);
         }
 
         /// <summary>
@@ -244,6 +256,11 @@ namespace QsPlus.Framework.StateMachine
         /// </summary>
         public void PopUpStateMachineState()
         {
+            if (_pushDownStateMachineCurrentState == null)
+            {
+                throw new QsPlusFrameworkException("类型为空的当前临时位下推状态机状态是无效的。");
+            }
+
             if (_pushDownStateMachineStack == null || _pushDownStateMachineStack.Count <= 0)
             {
                 return;
@@ -255,17 +272,14 @@ namespace QsPlus.Framework.StateMachine
                 tempPopUpState = _pushDownStateMachineStack.Pop();
             }
 
-            if (_pushDownStateMachineCurrentState == null)
+            if (tempPopUpState == null)
             {
-                throw new QsPlusFrameworkException("类型为空的当前临时位下推状态机状态是无效的。");
+                return;
             }
 
-            if (tempPopUpState != null)
-            {
-                _pushDownStateMachineCurrentState.OnLeaveState(this);
-                _pushDownStateMachineCurrentState = tempPopUpState;
-                _pushDownStateMachineCurrentState.OnResumeState(this);
-            }
+            _pushDownStateMachineCurrentState.OnLeaveState(this);
+            _pushDownStateMachineCurrentState = tempPopUpState;
+            _pushDownStateMachineCurrentState.OnResumeState(this);
         }
     }
 }

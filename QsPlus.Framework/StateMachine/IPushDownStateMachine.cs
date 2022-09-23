@@ -28,22 +28,22 @@ namespace QsPlus.Framework.StateMachine
         /// <summary>
         /// 获取状态机持有者类型。
         /// </summary>
-        Type GetMachineOwnerType { get; }
+        Type GetStateMachineOwnerType { get; }
 
         /// <summary>
-        /// 获取当前临时位状态名称。
+        /// 获取当前临时位状态机状态名称。
         /// </summary>
-        string GetCurrentStateName { get; }
+        string GetCurrentStateMachineStateName { get; }
 
         /// <summary>
         /// 获取状态机中状态的数量。
         /// </summary>
-        int GetMachineStateCount { get; }
+        int GetStateMachineStateCount { get; }
 
         /// <summary>
         /// 获取状态机中栈区状态的数量。
         /// </summary>
-        int GetMachineStackStateCount { get; }
+        int GetStateMachineStackStateCount { get; }
 
         /// <summary>
         /// 获取状态机是否正在运行。

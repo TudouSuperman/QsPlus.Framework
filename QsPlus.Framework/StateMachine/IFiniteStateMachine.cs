@@ -31,9 +31,9 @@ namespace QsPlus.Framework.StateMachine
         Type GetStateMachineOwnerType { get; }
         
         /// <summary>
-        /// 获取当前状态名称。
+        /// 获取当前状态机状态名称。
         /// </summary>
-        string GetCurrentStateName { get; }
+        string GetCurrentStateMachineStateName { get; }
         
         /// <summary>
         /// 获取状态机中状态的数量。
