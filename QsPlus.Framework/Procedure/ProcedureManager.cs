@@ -5,9 +5,9 @@
 // E-mail : www.shiqi.com@gmail.com
 //------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
 using QsPlus.Framework.Common;
-using QsPlus.Framework.Fsm;
+using QsPlus.Framework.StateMachine;
 
 namespace QsPlus.Framework.Procedure
 {
@@ -16,16 +16,32 @@ namespace QsPlus.Framework.Procedure
     /// </summary>
     internal sealed class ProcedureManager : IQsPlusFrameworkModule, IProcedureManager
     {
-        private IFsmManager _mFsmManager;
-        private IFsm<IProcedureManager> _mProcedureFsm;
+        private IStateMachineManager _stateMachineManager;
+        private IFiniteStateMachine<IProcedureManager> _finiteStateMachine;
 
         /// <summary>
-        /// 初始化流程管理器的新实例。
+        /// 获取当前流程状态。
+        /// </summary>
+        public ProcedureState GetCurrentProcedureState
+        {
+            get
+            {
+                if (_finiteStateMachine == null)
+                {
+                    throw new QsPlusFrameworkException("请先初始化流程管理器。");
+                }
+
+                return (ProcedureState) _finiteStateMachine.GetFiniteStateMachineCurrentState;
+            }
+        }
+
+        /// <summary>
+        /// 初始化流程管理器类的新实例。
         /// </summary>
         public ProcedureManager()
         {
-            _mFsmManager = null;
-            _mProcedureFsm = null;
+            _stateMachineManager = null;
+            _finiteStateMachine = null;
         }
 
         /// <summary>
@@ -40,7 +56,6 @@ namespace QsPlus.Framework.Procedure
         /// <param name="actualTime">真实时间。</param>
         public void QsPlusFrameworkModuleUpdate(float logicTime, float actualTime)
         {
-            
         }
 
         /// <summary>
@@ -48,131 +63,119 @@ namespace QsPlus.Framework.Procedure
         /// </summary>
         public void QsPlusFrameworkModuleShutdown()
         {
-            if (_mFsmManager != null)
+            if (_stateMachineManager == null)
             {
-                if (_mProcedureFsm != null)
-                {
-                    _mFsmManager.DestroyFsm(_mProcedureFsm);
-                    _mProcedureFsm = null;
-                }
-
-                _mFsmManager = null;
+                return;
             }
-        }
 
-        /// <summary>
-        /// 获取当前流程。
-        /// </summary>
-        public ProcedureBase CurrentProcedure
-        {
-            get
+            if (_finiteStateMachine == null)
             {
-                if (_mProcedureFsm == null)
-                {
-                    throw new QsPlusFrameworkException("请先初始化流程。");
-                }
-
-                return (ProcedureBase) _mProcedureFsm.CurrentState;
+                return;
             }
+
+            _stateMachineManager.DestroyFiniteStateMachine<ProcedureManager>();
+            _finiteStateMachine = null;
+            _stateMachineManager = null;
         }
 
         /// <summary>
         /// 初始化流程管理器。
         /// </summary>
-        /// <param name="fsmManager">状态机管理器。</param>
+        /// <param name="stateMachineManager">状态机管理器。</param>
         /// <param name="procedures">流程管理器包含的流程。</param>
-        public void Initialize(IFsmManager fsmManager, params ProcedureBase[] procedures)
+        public void Initialize(IStateMachineManager stateMachineManager, HashSet<ProcedureState> procedures)
         {
-            _mFsmManager = fsmManager ?? throw new QsPlusFrameworkException("状态机管理器是无效的。");
-            _mProcedureFsm = _mFsmManager.CreateFsm(this, procedures);
+            if (procedures == null || procedures.Count <= 0)
+            {
+                throw new QsPlusFrameworkException("类型为空的流程管理器包含的流程是无效的。");
+            }
+
+            _stateMachineManager = stateMachineManager ?? throw new QsPlusFrameworkException("类型为空的状态机管理器是无效的。");
+
+            HashSet<IFiniteStateMachineState<IProcedureManager>> tempFiniteStateMachineStates = new HashSet<IFiniteStateMachineState<IProcedureManager>>();
+            foreach (ProcedureState itemProcedureState in procedures)
+            {
+                tempFiniteStateMachineStates.Add(itemProcedureState);
+            }
+
+            _finiteStateMachine = _stateMachineManager.CreateFiniteStateMachine(this, tempFiniteStateMachineStates);
         }
 
         /// <summary>
-        /// 开始流程。
+        /// 启动流程状态。
         /// </summary>
-        /// <typeparam name="T">要开始的流程类型。</typeparam>
-        public void StartProcedure<T>() where T : ProcedureBase
+        /// <typeparam name="TProcedureState">要启动的流程持有者状态类型。</typeparam>
+        public void StartProcedure<TProcedureState>() where TProcedureState : ProcedureState
         {
-            if (_mProcedureFsm == null)
+            if (_finiteStateMachine == null)
             {
-                throw new QsPlusFrameworkException("请先初始化流程。");
+                throw new QsPlusFrameworkException("请先初始化流程管理器。");
             }
 
-            _mProcedureFsm.Start<T>();
+            _finiteStateMachine.StartFiniteStateMachineState<TProcedureState>();
         }
 
         /// <summary>
-        /// 开始流程。
+        /// 检查是否存在流程状态。
         /// </summary>
-        /// <param name="procedureType">要开始的流程类型。</param>
-        public void StartProcedure(Type procedureType)
+        /// <typeparam name="TProcedureState">要启动的流程持有者状态类型。</typeparam>
+        /// <returns>是否存在流程状态。</returns>
+        public bool HasProcedure<TProcedureState>() where TProcedureState : ProcedureState
         {
-            if (_mProcedureFsm == null)
+            if (_finiteStateMachine == null)
             {
-                throw new QsPlusFrameworkException("请先初始化流程。");
+                throw new QsPlusFrameworkException("请先初始化流程管理器。");
             }
 
-            _mProcedureFsm.Start(procedureType);
+            return _finiteStateMachine.HasFiniteStateMachineState<TProcedureState>();
         }
 
         /// <summary>
-        /// 是否存在流程。
+        /// 获取流程状态。
         /// </summary>
-        /// <typeparam name="T">要检查的流程类型。</typeparam>
-        /// <returns>是否存在流程。</returns>
-        public bool HasProcedure<T>() where T : ProcedureBase
+        /// <typeparam name="TProcedureState">要获取的流程持有者状态类型。</typeparam>
+        /// <returns>获取到的流程状态。</returns>
+        public ProcedureState GetProcedure<TProcedureState>() where TProcedureState : ProcedureState
         {
-            if (_mProcedureFsm == null)
+            if (_finiteStateMachine == null)
             {
-                throw new QsPlusFrameworkException("请先初始化流程。");
+                throw new QsPlusFrameworkException("请先初始化流程管理器。");
             }
 
-            return _mProcedureFsm.HasState<T>();
+            return _finiteStateMachine.GetFiniteStateMachineState<TProcedureState>();
         }
 
         /// <summary>
-        /// 是否存在流程。
+        /// 获取所有流程状态。
         /// </summary>
-        /// <param name="procedureType">要检查的流程类型。</param>
-        /// <returns>是否存在流程。</returns>
-        public bool HasProcedure(Type procedureType)
+        /// <returns>获取到的所有流程状态。</returns>
+        public ProcedureState[] GetProcedures()
         {
-            if (_mProcedureFsm == null)
+            if (_finiteStateMachine == null)
             {
-                throw new QsPlusFrameworkException("请先初始化流程。");
+                throw new QsPlusFrameworkException("请先初始化流程管理器。");
             }
 
-            return _mProcedureFsm.HasState(procedureType);
+            IFiniteStateMachineState<IProcedureManager>[] tempFiniteStateMachineStates = _finiteStateMachine.GetFiniteStateMachineStates();
+            ProcedureState[] tempProcedureStates = new ProcedureState[tempFiniteStateMachineStates.Length];
+            for (int i = 0; i < tempFiniteStateMachineStates.Length; i++)
+            {
+                tempProcedureStates[i] = (ProcedureState) tempFiniteStateMachineStates[i];
+            }
+
+            return tempProcedureStates;
         }
 
         /// <summary>
-        /// 获取流程。
+        /// 获取所有流程状态。
         /// </summary>
-        /// <typeparam name="T">要获取的流程类型。</typeparam>
-        /// <returns>要获取的流程。</returns>
-        public ProcedureBase GetProcedure<T>() where T : ProcedureBase
+        /// <param name="procedureStates">获取到的所有流程状态。</param>
+        public void GetProcedures(List<ProcedureState> procedureStates)
         {
-            if (_mProcedureFsm == null)
+            foreach (IFiniteStateMachineState<IProcedureManager> itemProcedureState in _finiteStateMachine.GetFiniteStateMachineStates())
             {
-                throw new QsPlusFrameworkException("请先初始化流程。");
+                procedureStates.Add((ProcedureState) itemProcedureState);
             }
-
-            return _mProcedureFsm.GetState<T>();
-        }
-
-        /// <summary>
-        /// 获取流程。
-        /// </summary>
-        /// <param name="procedureType">要获取的流程类型。</param>
-        /// <returns>要获取的流程。</returns>
-        public ProcedureBase GetProcedure(Type procedureType)
-        {
-            if (_mProcedureFsm == null)
-            {
-                throw new QsPlusFrameworkException("请先初始化流程。");
-            }
-
-            return (ProcedureBase) _mProcedureFsm.GetState(procedureType);
         }
     }
 }

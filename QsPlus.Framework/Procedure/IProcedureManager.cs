@@ -5,8 +5,8 @@
 // E-mail : www.shiqi.com@gmail.com
 //------------------------------------------------------------
 
-using System;
-using QsPlus.Framework.Fsm;
+using System.Collections.Generic;
+using QsPlus.Framework.StateMachine;
 
 namespace QsPlus.Framework.Procedure
 {
@@ -16,55 +16,47 @@ namespace QsPlus.Framework.Procedure
     public interface IProcedureManager
     {
         /// <summary>
-        /// 获取当前流程。
+        /// 获取当前流程状态。
         /// </summary>
-        ProcedureBase CurrentProcedure { get; }
+        ProcedureState GetCurrentProcedureState { get; }
 
         /// <summary>
         /// 初始化流程管理器。
         /// </summary>
-        /// <param name="fsmManager">有限状态机管理器。</param>
+        /// <param name="stateMachineManager">状态机管理器。</param>
         /// <param name="procedures">流程管理器包含的流程。</param>
-        void Initialize(IFsmManager fsmManager, params ProcedureBase[] procedures);
+        void Initialize(IStateMachineManager stateMachineManager, HashSet<ProcedureState> procedures);
 
         /// <summary>
-        /// 开始流程。
+        /// 启动流程状态。
         /// </summary>
-        /// <typeparam name="T">要开始的流程类型。</typeparam>
-        void StartProcedure<T>() where T : ProcedureBase;
+        /// <typeparam name="TProcedureState">要启动的流程持有者状态类型。</typeparam>
+        void StartProcedure<TProcedureState>() where TProcedureState : ProcedureState;
 
         /// <summary>
-        /// 开始流程。
+        /// 检查是否存在流程状态。
         /// </summary>
-        /// <param name="procedureType">要开始的流程类型。</param>
-        void StartProcedure(Type procedureType);
+        /// <typeparam name="TProcedureState">要启动的流程持有者状态类型。</typeparam>
+        /// <returns>是否存在流程状态。</returns>
+        bool HasProcedure<TProcedureState>() where TProcedureState : ProcedureState;
 
         /// <summary>
-        /// 是否存在流程。
+        /// 获取流程状态。
         /// </summary>
-        /// <typeparam name="T">要检查的流程类型。</typeparam>
-        /// <returns>是否存在流程。</returns>
-        bool HasProcedure<T>() where T : ProcedureBase;
+        /// <typeparam name="TProcedureState">要获取的流程持有者状态类型。</typeparam>
+        /// <returns>获取到的流程状态。</returns>
+        ProcedureState GetProcedure<TProcedureState>() where TProcedureState : ProcedureState;
 
         /// <summary>
-        /// 是否存在流程。
+        /// 获取所有流程状态。
         /// </summary>
-        /// <param name="procedureType">要检查的流程类型。</param>
-        /// <returns>是否存在流程。</returns>
-        bool HasProcedure(Type procedureType);
+        /// <returns>获取到的所有流程状态。</returns>
+        ProcedureState[] GetProcedures();
 
         /// <summary>
-        /// 获取流程。
+        /// 获取所有流程状态。
         /// </summary>
-        /// <typeparam name="T">要获取的流程类型。</typeparam>
-        /// <returns>要获取的流程。</returns>
-        ProcedureBase GetProcedure<T>() where T : ProcedureBase;
-
-        /// <summary>
-        /// 获取流程。
-        /// </summary>
-        /// <param name="procedureType">要获取的流程类型。</param>
-        /// <returns>要获取的流程。</returns>
-        ProcedureBase GetProcedure(Type procedureType);
+        /// <param name="procedureStates">获取到的所有流程状态。</param>
+        void GetProcedures(List<ProcedureState> procedureStates);
     }
 }
