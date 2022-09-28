@@ -12,7 +12,7 @@ namespace QsPlus.Framework.Config
     /// <summary>
     /// 配置管理器接口。
     /// </summary>
-    internal sealed class ConfigManager : IQsPlusFrameworkModule, IConfigManager
+    internal sealed class ConfigManager : IQsPlusFrameworkModule
     {
         /// <summary>
         /// 框架模块优先级。

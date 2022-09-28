@@ -28,11 +28,6 @@ namespace QsPlus.Framework.Common
         MessageManager,
 
         /// <summary>
-        /// 状态机管理器。
-        /// </summary>
-        FsmManager,
-
-        /// <summary>
         /// 界面管理器。
         /// </summary>
         UiManager,
@@ -50,6 +45,11 @@ namespace QsPlus.Framework.Common
         /// <summary>
         /// 状态机管理器。
         /// </summary>
-        StateMachineManager
+        StateMachineManager,
+        
+        /// <summary>
+        /// 时间轮管理器。
+        /// </summary>
+        TimingWheelManager,
     }
 }
