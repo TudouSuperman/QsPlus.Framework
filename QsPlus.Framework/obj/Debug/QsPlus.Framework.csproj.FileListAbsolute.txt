@@ -1,7 +1,0 @@
-/Users/shiqi/ShiQi2022/QsPlus.Framework/QsPlus.Framework/bin/Debug/QsPlus.Framework.xml
-/Users/shiqi/ShiQi2022/QsPlus.Framework/QsPlus.Framework/bin/Debug/QsPlus.Framework.dll
-/Users/shiqi/ShiQi2022/QsPlus.Framework/QsPlus.Framework/bin/Debug/QsPlus.Framework.pdb
-/Users/shiqi/ShiQi2022/QsPlus.Framework/QsPlus.Framework/obj/Debug/QsPlus.Framework.csproj.AssemblyReference.cache
-/Users/shiqi/ShiQi2022/QsPlus.Framework/QsPlus.Framework/obj/Debug/QsPlus.Framework.csproj.CoreCompileInputs.cache
-/Users/shiqi/ShiQi2022/QsPlus.Framework/QsPlus.Framework/obj/Debug/QsPlus.Framework.dll
-/Users/shiqi/ShiQi2022/QsPlus.Framework/QsPlus.Framework/obj/Debug/QsPlus.Framework.pdb
