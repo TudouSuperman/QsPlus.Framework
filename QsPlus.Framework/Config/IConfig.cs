@@ -5,13 +5,21 @@
 // E-mail : www.shiqi.com@gmail.com
 //------------------------------------------------------------
 
-namespace QsPlus.Framework.UI
+namespace QsPlus.Framework.Config
 {
     /// <summary>
-    /// 用户界面辅助器接口。
+    /// 配置接口。
     /// </summary>
-    public interface IUiFormHelper
+    public interface IConfig
     {
-      
+        /// <summary>
+        /// 配置文件名。
+        /// </summary>
+        string ConfigFileName { get; }
+
+        /// <summary>
+        /// 配置文件信息。
+        /// </summary>
+        string ConfigFileInfo { get; }
     }
 }

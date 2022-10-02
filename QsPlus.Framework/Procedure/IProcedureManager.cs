@@ -36,7 +36,7 @@ namespace QsPlus.Framework.Procedure
         /// <summary>
         /// 检查是否存在流程状态。
         /// </summary>
-        /// <typeparam name="TProcedureState">要启动的流程持有者状态类型。</typeparam>
+        /// <typeparam name="TProcedureState">要检查的流程持有者状态类型。</typeparam>
         /// <returns>是否存在流程状态。</returns>
         bool HasProcedure<TProcedureState>() where TProcedureState : ProcedureState;
 

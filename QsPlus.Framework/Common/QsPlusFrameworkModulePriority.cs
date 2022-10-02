@@ -28,9 +28,9 @@ namespace QsPlus.Framework.Common
         MessageManager,
 
         /// <summary>
-        /// 界面管理器。
+        /// 用户界面管理器。
         /// </summary>
-        UiManager,
+        UserInterfaceManager,
 
         /// <summary>
         /// 配置管理器。

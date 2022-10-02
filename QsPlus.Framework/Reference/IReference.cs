@@ -13,7 +13,7 @@ namespace QsPlus.Framework.Reference
     public interface IReference
     {
         /// <summary>
-        /// 清理引用(释放时调用)。
+        /// 清理引用。
         /// </summary>
         void ClearReference();
     }

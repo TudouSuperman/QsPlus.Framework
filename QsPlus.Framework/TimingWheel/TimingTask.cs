@@ -109,7 +109,7 @@ namespace QsPlus.Framework.TimingWheel
         }
 
         /// <summary>
-        /// 清理引用(释放时调用)。
+        /// 清理引用。
         /// </summary>
         public void ClearReference()
         {
