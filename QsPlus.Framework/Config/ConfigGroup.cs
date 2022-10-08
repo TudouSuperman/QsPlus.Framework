@@ -3,16 +3,24 @@
 // Copyright © 2022-2035 Shi Qi. All rights reserved.
 // GitHub : https://github.com/ShiQi2022/QsPlus.Framework
 // E-mail : www.shiqi.com@gmail.com
-// QQ : 2581424471@qq.com
 //------------------------------------------------------------
 
-namespace QsPlus.Framework.Asset
+using QsPlus.Framework.Reference;
+
+namespace QsPlus.Framework.Config
 {
     /// <summary>
-    /// 资源辅助器接口。
+    /// 配置组类。
     /// </summary>
-    public interface IAssetHelper
+    internal sealed class ConfigGroup : IReference
     {
         
+        
+        /// <summary>
+        /// 清理 ConfigGroup 引用。
+        /// </summary>
+        public void ClearReference()
+        {
+        }
     }
 }

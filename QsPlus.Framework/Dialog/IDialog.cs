@@ -5,32 +5,32 @@
 // E-mail : www.shiqi.com@gmail.com
 //------------------------------------------------------------
 
-namespace QsPlus.Framework.UserInterface
+namespace QsPlus.Framework.Dialog
 {
     /// <summary>
-    /// 用户界面接口。
+    /// 对话框接口。
     /// </summary>
-    public interface IUserInterface
+    public interface IDialog
     {
         /// <summary>
-        /// 用户界面编号。
+        /// 对话框编号。
         /// </summary>
-        int UserInterfaceId { get; }
+        int DialogId { get; }
+                                                                     
+        /// <summary>
+        /// 对话框名称。
+        /// </summary>
+        int DialogName { get; }
 
         /// <summary>
-        /// 用户界面名称。
+        /// 对话框实例。
         /// </summary>
-        int UserInterfaceName { get; }
+        object DialogHandle { get; }
 
         /// <summary>
-        /// 用户界面实例。
-        /// </summary>
-        object UserInterfaceHandle { get; }
-
-        /// <summary>
-        /// 设置用户界面深度。
+        /// 设置对话框深度。
         /// </summary>
         /// <param name="depth">深度值。</param>
-        void SetUserInterfaceDepth(int depth);
+        void SetDialogDepth(int depth);
     }
 }

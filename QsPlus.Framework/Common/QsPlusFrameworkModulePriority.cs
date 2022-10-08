@@ -18,6 +18,11 @@ namespace QsPlus.Framework.Common
         ReferenceManager = 0,
 
         /// <summary>
+        /// 资源管理器。
+        /// </summary>
+        ResourceManager,
+
+        /// <summary>
         /// 事件管理器。
         /// </summary>
         EventManager,
@@ -28,9 +33,9 @@ namespace QsPlus.Framework.Common
         MessageManager,
 
         /// <summary>
-        /// 用户界面管理器。
+        /// 对话框管理器。
         /// </summary>
-        UserInterfaceManager,
+        DialogManager,
 
         /// <summary>
         /// 配置管理器。
@@ -46,7 +51,7 @@ namespace QsPlus.Framework.Common
         /// 状态机管理器。
         /// </summary>
         StateMachineManager,
-        
+
         /// <summary>
         /// 时间轮管理器。
         /// </summary>

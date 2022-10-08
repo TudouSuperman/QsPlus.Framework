@@ -48,7 +48,7 @@ namespace QsPlus.Framework.Config
         }
 
         /// <summary>
-        /// 清理引用。
+        /// 清理 Config 引用。
         /// </summary>
         public void ClearReference()
         {
